@@ -69,19 +69,19 @@ const Footer = () => {
             <img src="../static/images/icons/tik-tok.svg" alt="" />
           </div>
           <div className="about-us">
-            <h3 className="footer-title">Sobre a empresa</h3>
+            <h3 className="/home">Sobre a empresa</h3>
             <ul>
-              <li><a href="/quem-somos">Quem Somos</a></li>
-              <li><a href="/fale-conosco">Fale Conosco</a></li>
+              <li><a href="/home">Quem Somos</a></li>
+              <li><a href="/home">Fale Conosco</a></li>
             </ul>
           </div>
           <div className="politics">
-            <h3 className="footer-title">Políticas</h3>
+            <h3 className="/home">Políticas</h3>
             <ul>
-              <li><a href="/quem-somos">Política de Privacidade</a></li>
-              <li><a href="/fale-conosco">Termos de Uso</a></li>
-              <li><a href="/quem-somos">Política de Entrega</a></li>
-              <li><a href="/fale-conosco">Política de Cupom e Desconto</a></li>
+              <li><a href="/home">Política de Privacidade</a></li>
+              <li><a href="/home">Termos de Uso</a></li>
+              <li><a href="/home">Política de Entrega</a></li>
+              <li><a href="/home">Política de Cupom e Desconto</a></li>
             </ul>
           </div>
         </div>

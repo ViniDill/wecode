@@ -1,5 +1,4 @@
 import React from "react";
-import Slider from "react-slick";
 import "../../Styles/Components/principalBanner.scss";
 
 function PrincipalBanner() {

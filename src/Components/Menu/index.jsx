@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../Styles/Components/menu.scss";
 
 const Menu = () => {
@@ -15,25 +15,25 @@ const Menu = () => {
                 <ul>
                     <li className="menu-item">
                         <a
-                            href="#"
+                            href="/home"
                             onMouseOver={() => handleMouseOver("image-5")} // Sapatos
                         >
                             Sapatos
                         </a>
                         <a
-                            href="#"
+                            href="/home"
                             onMouseOver={() => handleMouseOver("image-1")} // Scarpins
                         >
                             Scarpins
                         </a>
                         <a
-                            href="#"
+                            href="/home"
                             onMouseOver={() => handleMouseOver("image-2")} // Sandálias
                         >
                             Sandálias
                         </a>
                         <a
-                            href="#"
+                            href="/home"
                             onMouseOver={() => handleMouseOver("image-3")} // Botas
                         >
                             Botas

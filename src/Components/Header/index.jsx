@@ -96,14 +96,14 @@ function Header() {
       <div className="header-top">
         <span>
           Você está em: <strong>{cidade || 'Carregando...'}</strong>
-          <a href="#" onClick={() => setShowModal(true)}> Alterar</a>
+          <a href="/home" onClick={() => setShowModal(true)}> Alterar</a>
         </span>
       </div>
 
       <header className={`header ${isFilled ? 'header-filled' : ''}`}>
         <div className="header-container">
           <div className="header-logo">
-            <a href="/">
+            <a href="/home">
               <img
                 src={isFilled ? './static/images/icons/logo-preto.svg' : './static/images/icons/logo-branco.svg'}
                 alt="Logo da Empresa"
@@ -117,11 +117,11 @@ function Header() {
                 onMouseEnter={() => setIsMenuVisible(true)}
                 className="menu-item-with-dropdown"
               >
-                <a href="#">Produtos <img src="./static/images/icons/arrow.svg" alt="" /></a>
+                <a href="/home">Produtos <img src="./static/images/icons/arrow.svg" alt="" /></a>
                 {isMenuVisible && <div ref={menuRef}><Menu /></div>}
               </li>
-              <li onMouseEnter={() => setIsMenuVisible(false)}><a href="#">Lançamentos</a></li>
-              <li onMouseEnter={() => setIsMenuVisible(false)}><a href="#">Outlet</a></li>
+              <li onMouseEnter={() => setIsMenuVisible(false)}><a href="/home">Lançamentos</a></li>
+              <li onMouseEnter={() => setIsMenuVisible(false)}><a href="/home">Outlet</a></li>
             </ul>
           </nav>
           <div className="header-actions">
