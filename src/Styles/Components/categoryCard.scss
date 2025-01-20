@@ -1,0 +1,11 @@
+@use "../Base/variables";
+
+.category-card-text{
+
+  p {
+    font-size: variables.$font-regular;
+    font-weight: variables.$weight-light;
+    color: variables.$dark-color;
+    margin-top: variables.$padding-small;
+  }
+}

@@ -1,0 +1,14 @@
+@use "../Base/variables";
+
+.categories {
+    margin: 0 variables.$space-large;
+
+    h2{
+        margin: variables.$padding-xlarge 0 variables.$padding-large;
+    }
+}
+
+.categories-container{
+    display: flex;
+    gap: variables.$space-small;
+}

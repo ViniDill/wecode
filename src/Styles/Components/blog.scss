@@ -1,0 +1,51 @@
+@use "../Base/variables";
+
+.blog-container{
+    margin-top: variables.$space-medium;
+    padding: 0 variables.$space-xlarge;
+    background-color: variables.$border-color;
+    margin: variables.$space-large 0;
+    padding: variables.$space-large variables.$space-xlarge;
+}
+
+.blog-title{
+    display: flex;
+    flex-direction: column;
+    gap: variables.$padding-small;
+
+    p{
+        font-size: variables.$font-medium;
+        font-weight: variables.$weight-light;
+        color: variables.$gray-text-color;
+    }
+    
+}
+
+.blog-description{
+    width: 100%;
+
+    p{
+        font-size: variables.$font-regular;
+        font-weight: variables.$weight-light;
+        color: variables.$gray-text-color;
+        text-align: left;
+        margin: variables.$padding-small 0;
+    }
+
+    a{
+        font-size: variables.$font-regular;
+        font-weight: variables.$weight-light;
+        color: variables.$dark-color;
+        text-decoration: underline;
+    }
+}
+
+.blog-images{
+    display: flex;
+    gap: variables.$space-small;
+    margin-top: variables.$space-medium;
+
+    img {
+        width: 100%;
+    }
+}

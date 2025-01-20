@@ -1,0 +1,12 @@
+@use "../Base/variables";
+
+.launches{
+    margin-top: variables.$space-medium;
+    padding: 0 variables.$space-xlarge;
+
+}
+
+.launches-container {
+    display: flex;
+    gap: variables.$space-small;
+}

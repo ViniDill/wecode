@@ -1,0 +1,7 @@
+@use 'variables' as variables;
+@use 'reset' as reset;
+
+h2 {
+    font-size: variables.$font-large;
+    font-weight: variables.$weight-regular;
+}

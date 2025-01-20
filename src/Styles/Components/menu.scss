@@ -1,0 +1,38 @@
+@use "../Base/variables";
+
+.menu-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: variables.$light-color;
+  z-index: 1000;
+  padding: variables.$space-small 0 variables.$space-regular 280px;
+  display: flex;
+  align-items: start;
+}
+
+.menu-item {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  a {
+    display: block;
+    margin: variables.$padding-medium variables.$space-large 0 0;
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: variables.$tertiary-color;
+    }
+  }
+}
+
+.load-image {
+  img {
+    width: 315px;
+    height: 315px;
+    object-fit: cover;
+ }
+}

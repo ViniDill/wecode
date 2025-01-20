@@ -1,0 +1,15 @@
+@use "../Base/variables";
+
+.navBannerContainer{
+    display: flex;
+    gap: 16px;
+    margin-top: 37px;
+}
+
+.bigBanner {
+    width: 63.55%;
+}
+
+.smallBanner {
+    width: 36.35%;
+}

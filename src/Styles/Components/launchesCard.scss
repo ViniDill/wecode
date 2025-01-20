@@ -1,0 +1,91 @@
+@use "../Base/variables";
+
+.launches-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 340px;
+    height: 378px;
+    margin-bottom: variables.$padding-xlarge;
+  }
+
+  .icons-container-top {
+    display: flex;
+    justify-content: flex-end;  // Alinha o ícone do favorito à direita
+    width: 100%;
+    background-color: variables.$border-color;
+    padding: variables.$padding-small variables.$padding-small 0 0;
+    margin-top: variables.$padding-xlarge;
+
+    .icons-container-fav {
+        cursor: pointer;
+    }
+  }
+  
+  .icons-container-middle {
+    display: flex;
+    justify-content: center;  // Centraliza a imagem
+    width: 100%;
+    background-color: variables.$border-color;
+  }
+
+  .icons-container-image{
+    width: 100%;
+    max-width: 220px;
+  }
+  
+  .icons-container-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: end;
+    font-size: variables.$font-thin;
+    background-color: variables.$border-color;
+    padding: 0 variables.$padding-small variables.$padding-small;
+  }
+  
+  .discount-tag {
+    font-size: variables.$font-thin;
+    font-weight: variables.$weight-regular;
+    color: variables.$tertiary-color;
+  }
+  
+  .icons-container-add {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-left: auto;  // Isso garante que o ícone de adicionar vá para a extrema direita
+  }
+  
+  .price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .price-original {
+    text-decoration: line-through;
+    font-weight: variables.$weight-light;
+    font-size: variables.$font-thin;
+    color: variables.$gray-text-color;
+    margin-top: variables.$padding-small;
+  }
+  
+  .price-discount {
+    font-weight: variables.$weight-regular;
+    font-size: variables.$font-regular;
+    color: variables.$dark-color;
+    margin-top: variables.$padding-small;
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    margin-top: variables.$padding-medium;
+  }

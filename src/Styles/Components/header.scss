@@ -1,0 +1,81 @@
+@use "../Base/variables";
+
+.header-top {
+  height: 39px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #b11b21;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 14px;
+  z-index: 200; /* Certifique-se de que está acima do header */
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+/* Header principal */
+.header {
+  position: fixed;
+  top: 30px; /* Espaço reservado para a faixa vermelha */
+  width: 100%;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+
+  &.header-filled {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    gap: variables.$space-medium;
+    padding: variables.$space-medium variables.$space-large;
+  }
+
+  .header-logo img {
+    height: 40px;
+  }
+
+  .header-nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: variables.$space-medium;
+    list-style: none;
+    width: 100%;
+
+    li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+
+      &:hover {
+        color: #b11b21;
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: variables.$space-small;
+    margin-left: auto;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+
+      &:hover {
+        color: #b11b21;
+      }
+    }
+  }
+}
