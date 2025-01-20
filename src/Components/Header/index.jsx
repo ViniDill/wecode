@@ -95,8 +95,8 @@ function Header() {
     <>
       <div className="header-top">
         <span>
-          Você está em: <strong>{cidade || 'Carregando...'}</strong>
-          <a href="/home" onClick={() => setShowModal(true)}> Alterar</a>
+          Você está em: {cidade || 'Carregando...'}
+          <a href="#" onClick={() => setShowModal(true)}> Alterar</a>
         </span>
       </div>
 

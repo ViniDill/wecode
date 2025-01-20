@@ -6,7 +6,7 @@ function Routes() {
   return (
     <BrowserRouter>
       <Rota>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
       </Rota>
     </BrowserRouter>
   );

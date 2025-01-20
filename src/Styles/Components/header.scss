@@ -1,21 +1,24 @@
 @use "../Base/variables";
 
 .header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 39px;
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #b11b21;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  font-size: 14px;
-  z-index: 200; /* Certifique-se de que está acima do header */
+  background-color: variables.$tertiary-color;
+  color: variables.$light-color;
+  padding: variables.$padding-small;
+  font-size: variables.$font-small;
+  z-index: 200;
 
   a {
-    color: #fff;
+    color: variables.$light-color;
+    font-size: variables.$font-small;
     text-decoration: underline;
-    font-weight: bold;
+    margin-left: variables.$padding-small;
   }
 }
 
@@ -57,7 +60,7 @@
       font-weight: bold;
 
       &:hover {
-        color: #b11b21;
+        color: variables.$tertiary-color;
       }
     }
   }
@@ -74,7 +77,7 @@
       font-size: 18px;
 
       &:hover {
-        color: #b11b21;
+        color: variables.$tertiary-color;
       }
     }
   }
