@@ -67,18 +67,16 @@
 
   .header-actions {
     display: flex;
-    gap: variables.$space-small;
+    gap: variables.$padding-large;
     margin-left: auto;
 
     button {
+      width: 20px;
+      height: 20px;
       background: none;
       border: none;
       cursor: pointer;
       font-size: 18px;
-
-      &:hover {
-        color: variables.$tertiary-color;
-      }
     }
   }
 

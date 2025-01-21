@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../Styles/Components/header.scss';
 import Menu from '../Menu';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button, CircularProgress } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, CircularProgress, Drawer } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import Cart from '../Cart';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useCart } from '../../context/CartContext';
 
 function Header() {
   const [isFilled, setIsFilled] = useState(false);
@@ -14,9 +17,17 @@ function Header() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]); // Estado para armazenar itens no carrinho
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); // Estado para verificar se o usuário está logado
 
   const menuRef = useRef(null);
   const menuItemRef = useRef(null);
+
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0); // Certifique-se de que "item.quantity" está correto
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,7 +100,27 @@ function Header() {
     } else {
       setShowModal(true);
     }
+
+    // Simulação de verificação de login
+    const loggedIn = localStorage.getItem('userLoggedIn');
+    if (loggedIn === 'true') {
+      setIsUserLoggedIn(true);
+    }
+
+    // Simulação de dados do carrinho
+    const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItems(savedCartItems);
   }, []);
+
+  const cartIcon = cartItems.length > 0 ? 
+    (isFilled ? <img src="./static/images/icons/Cart-Black.svg" alt="Ícone de carrinho" /> : <img src="./static/images/icons/Cart.svg" alt="Ícone de carrinho" />) : 
+    (isFilled ? <img src="./static/images/icons/Cart-Black.svg" alt="Ícone de carrinho vazio" /> : <img src="./static/images/icons/Cart.svg" alt="Ícone de carrinho vazio" />);
+
+  const loginIcon = isUserLoggedIn ? 
+    (isFilled ? <img src="./static/images/icons/User-Black.svg" alt="Ícone de usuário" /> : <AccountCircleIcon />) : 
+    (isFilled ? <img src="./static/images/icons/User-Black.svg" alt="Ícone de usuário" /> : <img src="./static/images/icons/User.svg" alt="Ícone de usuário" />);
+
+  const searchIcon = isFilled ? <img src="./static/images/icons/Lupa-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/Lupa.svg" alt="Ícone de busca" />;
 
   return (
     <>
@@ -125,14 +156,15 @@ function Header() {
             </ul>
           </nav>
           <div className="header-actions">
-            <button className="search-btn">🔍</button>
-            <button className="login-btn">👤</button>
-            <button className="cart-btn">🛒</button>
+            <button className="search-btn">{searchIcon}</button>
+            <button className="login-btn">{loginIcon}</button>
+            <button className="cart-btn" onClick={() => setIsCartDrawerOpen(true)}> 
+              {cartIcon} {totalQuantity > 0 && <span>{totalQuantity}</span>}
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Modal para Alteração de CEP */}
       <Dialog 
         open={showModal} 
         onClose={() => setShowModal(false)}
@@ -146,21 +178,21 @@ function Header() {
         }}
       >
         <DialogTitle style={{ position: 'relative' }}>
-        <CloseIcon 
-          style={{ 
-            position: 'absolute', 
-            top: '0', 
-            right: '0', 
-            cursor: 'pointer', 
-            backgroundColor: '#EEEEEE', 
-            padding: '5px', 
-            borderRadius: '0', // Remove bordas arredondadas, se necessário
-            width: '24px', // Define largura
-            height: '24px', // Define altura
-            boxSizing: 'border-box' // Garante que padding seja incluído no tamanho total
-          }} 
-          onClick={() => setShowModal(false)} 
-        />
+          <CloseIcon 
+            style={{ 
+              position: 'absolute', 
+              top: '0', 
+              right: '0', 
+              cursor: 'pointer', 
+              backgroundColor: '#EEEEEE', 
+              padding: '5px', 
+              borderRadius: '0', 
+              width: '24px', 
+              height: '24px', 
+              boxSizing: 'border-box' 
+            }} 
+            onClick={() => setShowModal(false)} 
+          />
           <div className='title-container'>
             <span className='modal-title'>Personalize sua experiência e encontre produtos perto de você!</span>
           </div>
@@ -204,10 +236,35 @@ function Header() {
               />
             </div>
           </div>
-        </DialogContent><DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
-          <button className='save-button' onClick={saveCep} color="primary">Salvar endereço</button>
+        </DialogContent>
+        <DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
+          <button className='save-button' onClick={saveCep}>Salvar endereço</button>
         </DialogActions>
       </Dialog>
+
+      <Drawer
+        anchor="right"
+        open={isCartDrawerOpen}
+        onClose={() => setIsCartDrawerOpen(false)}
+      >
+        <div>
+          <button 
+            onClick={() => setIsCartDrawerOpen(false)} 
+            style={{ 
+              position: 'absolute', 
+              top: '10px', 
+              right: '10px', 
+              background: 'none', 
+              border: 'none', 
+              fontSize: '24px', 
+              cursor: 'pointer' 
+            }}
+          >
+            <CloseIcon />
+          </button>
+          <Cart />
+        </div>
+      </Drawer>
     </>
   );
 }

@@ -22,7 +22,7 @@ const Menu = () => {
                         </a>
                         <a
                             href="/home"
-                            onMouseOver={() => handleMouseOver("image-1")} // Scarpins
+                            onMouseOver={() => handleMouseOver("image-3")} // Scarpins
                         >
                             Scarpins
                         </a>
@@ -34,7 +34,7 @@ const Menu = () => {
                         </a>
                         <a
                             href="/home"
-                            onMouseOver={() => handleMouseOver("image-3")} // Botas
+                            onMouseOver={() => handleMouseOver("image-1")} // Botas
                         >
                             Botas
                         </a>

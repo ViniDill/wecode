@@ -1,0 +1,97 @@
+@use "../Base/variables";
+
+.card-cart{
+    padding: variables.$padding-large;
+}
+
+.image-description{
+    display: flex;
+    padding: variables.$padding-medium;
+    border: 1px solid #EEEEEE;
+}
+
+.cart-image{
+    width: 150px;
+    height: 150px;
+
+    img{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.cart-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-description{
+
+    p{
+        font-size: variables.$font-small;
+        font-weight: variables.$weight-regular;
+        color: variables.$dark-color;
+    }
+
+    span{
+        font-size: variables.$font-thin;
+        font-weight: variables.$weight-regular;
+        color: variables.$gray-text-color;
+    }
+}
+
+.cart-price{
+    font-size: variables.$font-regular;
+    font-weight: variables.$weight-regular;
+    color: variables.$dark-color;
+}
+
+.add-remove{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: variables.$space-small;
+    border: 1px solid #EEEEEE;
+}
+
+.counter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #EEEEEE;
+    padding: 8px 12px;
+    width: 93px;
+    height: 33px;
+
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        font-size: variables.$font-medium;
+        font-weight: variables.$weight-regular;
+        color: variables.$dark-color;
+        cursor: pointer;
+    }
+
+    span{
+        font-size: variables.$font-small;
+        font-weight: variables.$weight-regular;
+        color: variables.$dark-color;
+    }
+}
+
+.remove-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: variables.$font-thin;
+    font-weight: variables.$weight-regular;
+    color: variables.$gray-text-color;
+    cursor: pointer;
+
+}
