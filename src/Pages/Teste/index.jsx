@@ -3,6 +3,7 @@ import NavBanner from '../../Components/NavBanner';
 import Launches from '../../Components/Launches';
 import Blog from '../../Components/Blog';
 import Header from '../../Components/Header';
+import Cart from '../../Components/Cart';
 
 const Teste = () => {
     return (
@@ -11,6 +12,7 @@ const Teste = () => {
             <NavBanner />
             <Launches />
             <Blog />
+            <Cart />
         </div>
     );
 };
