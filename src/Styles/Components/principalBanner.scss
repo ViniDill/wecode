@@ -1,9 +1,13 @@
 @use "../Base/variables";
 
-.banner-container {
-    width: 100%;
-}
-
-.banner-container-image{
-    width: 100%;
-}
+.swiper-container {
+    position: relative; /* Para que a paginação seja posicionada em relação ao swiper */
+  }
+  
+  .swiper-pagination {
+    position: absolute;
+    top: 10px; /* Ajuste a posição para onde você quer que fique */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Garantir que a paginação fique sobre a imagem */
+  }

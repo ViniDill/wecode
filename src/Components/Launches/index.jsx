@@ -3,6 +3,14 @@ import LaunchesCard from "../LaunchesCard";
 import AddToCartDialog from "../AddToCartDialog";
 import "../../Styles/Components/launches.scss";
 import { getProducts } from "../../utils";
+import "../../Styles/Components/principalBanner.scss";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { register } from "swiper/element/bundle";
+import "swiper/scss/pagination"
+import "swiper/scss/navigation"
+import 'swiper/scss';
+
+register();
 
 const Launches = () => {
   const [products, setProducts] = useState([]);
@@ -21,8 +29,6 @@ const Launches = () => {
 
   const handleAddClick = (product) => {
     setSelectedProduct(product);
-
-    // Configurar os tamanhos indisponíveis específicos para o produto
     const sizesUnavailableForProduct = product.unavailableSizes || [];
     setUnavailableSizes(sizesUnavailableForProduct);
   };
@@ -31,16 +37,41 @@ const Launches = () => {
     <div className="launches">
       <h2>Lançamentos</h2>
       <div className="launches-container">
-        {products.map((product) => (
-          <LaunchesCard
-            key={product.id}
-            image={`${getFileName(product.image)}.png`}
-            description={product.name}
-            price={product.price.amount}
-            discount={product.price.isDiscount}
-            onAddClick={() => handleAddClick(product)} // Passa o produto selecionado
-          />
-        ))}
+        <Swiper
+          slidesPerView={5}
+          pagination={{ clickable: true }}
+          navigation
+          autoplay={{
+            delay: 3000,
+            pauseOnMouseEnter: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 5,
+            },
+          }}
+        >
+          {products.map((product) => (
+            <SwiperSlide key={product.id}>
+              <LaunchesCard
+                image={`${getFileName(product.image)}.png`}
+                description={product.name}
+                price={product.price.amount}
+                discount={product.price.isDiscount}
+                onAddClick={() => handleAddClick(product)} // Passa o produto selecionado
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       {selectedProduct && (

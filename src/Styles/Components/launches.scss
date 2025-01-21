@@ -1,12 +1,51 @@
 @use "../Base/variables";
 
-.launches{
-    margin-top: variables.$space-medium;
-    padding: 0 variables.$space-xlarge;
-
+.launches {
+  margin-top: variables.$space-medium;
+  padding: 0 variables.$space-xlarge;
 }
 
 .launches-container {
+  padding: variables.$space-small;
+  position: relative;  // Necessário para o posicionamento absoluto da pagination e das setas
+}
+
+.swiper {
+  .swiper-pagination {
+    position: absolute;
+    top: 10px;    // Ajuste a distância do topo
+    right: 50%;   // Centraliza a pagination horizontalmente
+    transform: translateX(50%); // Ajusta para que a pagination fique centralizada
     display: flex;
-    gap: variables.$space-small;
+    justify-content: center;  // Centraliza os pontos da pagination
+    gap: 10px;   // Ajuste a distância entre os pontos
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;  // Garante que as setas fiquem sobrepondo a pagination
+
+    // Ajuste das setas para ficarem ao redor dos pontos
+    background-color: rgba(0, 0, 0, 0.5); // Exemplo de fundo transparente
+    padding: 5px;  // Ajuste do tamanho das setas
+
+    // Para a seta direita
+    &.swiper-button-next {
+      right: -30px;  // Ajuste para a seta direita
+    }
+
+    // Para a seta esquerda
+    &.swiper-button-prev {
+      left: -30px;   // Ajuste para a seta esquerda
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;  // Garantir que os slides fiquem centralizados
+    align-items: center;
+    padding: 0 variables.$space-small;  // Ajuste o espaçamento entre os slides
+  }
 }
