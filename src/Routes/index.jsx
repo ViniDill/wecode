@@ -1,15 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes as Rota } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from '../Pages/Home';
+import Teste from '../Pages/Teste';
 
-function Routes() {
+function AppRoutes() {
   return (
     <BrowserRouter>
-      <Rota>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} /> {/* Redireciona para /home */}
         <Route path="/home" element={<Home />} />
-      </Rota>
+        <Route path="/testes" element={<Teste />} />
+      </Routes>
     </BrowserRouter>
   );
 }
 
-export default Routes;
+export default AppRoutes;

@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss'; 
-import Routes from './Routes';
+import AppRoutes from './Routes'; // Importa o componente com o novo nome
 
 function App() {
   return (
     <>
-      <Routes />
+      <AppRoutes />
     </>
   );
 }

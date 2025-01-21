@@ -133,63 +133,79 @@ function Header() {
       </header>
 
       {/* Modal para Alteração de CEP */}
-      <Dialog open={showModal} onClose={() => setShowModal(false)}>
+      <Dialog 
+        open={showModal} 
+        onClose={() => setShowModal(false)}
+        PaperProps={{
+          style: {
+            width: '610px',
+            maxWidth: '610px',
+            margin: '0 auto',
+            borderRadius: '0',
+          },
+        }}
+      >
         <DialogTitle style={{ position: 'relative' }}>
-          <CloseIcon 
-            style={{ 
-              position: 'absolute', 
-              top: '8px', 
-              right: '8px', 
-              cursor: 'pointer' 
-            }} 
-            onClick={() => setShowModal(false)} 
-          />
-          <div style={{ textAlign: 'center', marginTop: '30px' }}>
-            <span>Personalize sua experiência e encontre produtos perto de você!</span>
+        <CloseIcon 
+          style={{ 
+            position: 'absolute', 
+            top: '0', 
+            right: '0', 
+            cursor: 'pointer', 
+            backgroundColor: '#EEEEEE', 
+            padding: '5px', 
+            borderRadius: '0', // Remove bordas arredondadas, se necessário
+            width: '24px', // Define largura
+            height: '24px', // Define altura
+            boxSizing: 'border-box' // Garante que padding seja incluído no tamanho total
+          }} 
+          onClick={() => setShowModal(false)} 
+        />
+          <div className='title-container'>
+            <span className='modal-title'>Personalize sua experiência e encontre produtos perto de você!</span>
           </div>
         </DialogTitle>
         <DialogContent>
-          <div>
-            <label htmlFor="cep">CEP</label>
+          <div className='CEP'>
+            <label className='CEP-label' htmlFor="cep">Código postal*</label>
             <input
+              className='CEP-input'
               type="text"
               id="cep"
               value={cep}
               onChange={handleCepChange}
               maxLength="8"
-              placeholder="Digite seu CEP"
-              style={{ width: '100%', padding: '8px', marginBottom: '16px' }}
+              placeholder="00000-000"
             />
           </div>
           {loading && <CircularProgress />}
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <div style={{ display: 'flex' }}>
-            <div style={{ display: 'flex', flexDirection: 'column'}}>
-              <label htmlFor="cidade">Cidade</label>
+          <div className='city-state'>
+            <div className='city'>
+              <label className='city-label' htmlFor="cidade">Cidade</label>
               <input
+                className='city-input'
                 type="text"
                 id="cidade"
                 value={cidade}
                 readOnly
-                placeholder="Cidade"
-                style={{ width: '100%', padding: '8px', marginBottom: '16px' }}
+                placeholder="Opcional"
               />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column'}}>
-              <label htmlFor="estado">Estado</label>
+            <div className='state'>
+              <label className='state-label' htmlFor="estado">Estado</label>
               <input
+                className='state-input'
                 type="text"
                 id="estado"
                 value={estado}
                 readOnly
-                placeholder="Estado"
-                style={{ width: '100%', padding: '8px', marginBottom: '16px' }}
+                placeholder="Opcional"
               />
             </div>
           </div>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={saveCep} color="primary">Salvar</Button>
+        </DialogContent><DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
+          <button className='save-button' onClick={saveCep} color="primary">Salvar endereço</button>
         </DialogActions>
       </Dialog>
     </>
