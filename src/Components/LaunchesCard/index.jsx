@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import "../../Styles/Components/launchesCard.scss";
 
-const LaunchesCard = ({ image, description, price, discount }) => {
+const LaunchesCard = ({ image, description, price, discount, onAddClick }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const favoriteIcon = useMemo(() => {
@@ -23,7 +23,6 @@ const LaunchesCard = ({ image, description, price, discount }) => {
 
   return (
     <div className="launches-card">
-      {/* Primeira Div: Favorito */}
       <div className="icons-container-top">
         <img
           className="icons-container-fav"
@@ -32,17 +31,13 @@ const LaunchesCard = ({ image, description, price, discount }) => {
           onClick={handleFavoriteToggle}
         />
       </div>
-
-      {/* Segunda Div: Imagem do Produto */}
       <div className="icons-container-middle">
         <img
           className="icons-container-image"
-          src={`/static/images/produtos/${image}`}
+          src={`/static/images/produtos/${image}`} // Exibindo a imagem formatada
           alt="Product"
         />
       </div>
-
-      {/* Terceira Div: Desconto e Adicionar à Vitrine */}
       <div className="icons-container-bottom">
         {discountPercentage && (
           <div className="discount-tag">
@@ -53,9 +48,9 @@ const LaunchesCard = ({ image, description, price, discount }) => {
           className="icons-container-add"
           src="./static/images/icons/Adicionar-pela-vitrine.svg"
           alt="Add"
+          onClick={onAddClick} // Chama a função ao clicar
         />
       </div>
-
       <div className="info-container">
         <p>{description}</p>
         {discount ? (
