@@ -3,28 +3,24 @@ import { useCart } from '../../context/CartContext';
 import CardCart from '../CardCart';
 import '../../Styles/Components/cart.scss';
 
-const Cart = ({ onContinueShopping }) => {  // Recebe a função como prop
+const Cart = ({ onContinueShopping }) => {
   const { cartItems, removeFromCart } = useCart();
 
   const { subtotal, totalDiscount } = cartItems.reduce(
     (acc, item) => {
-      const price = parseFloat(item.price.amount);
-      const discountPrice = parseFloat(item.price.isDiscount);
-      const quantity = item.quantity;
-
-      const totalPrice = discountPrice
-        ? discountPrice * quantity
-        : price
-        ? price * quantity
-        : 0;
-
+      const price = parseFloat(item.price.amount) || 0;
+      const discountPrice = parseFloat(item.price.isDiscount) || price;
+      const quantity = item.quantity || 1;
+  
+      const totalPrice = discountPrice * quantity;
+  
       acc.subtotal += totalPrice;
-
-      if (!isNaN(price) && !isNaN(discountPrice)) {
+  
+      if (price > discountPrice) {
         const discountPerItem = price - discountPrice;
         acc.totalDiscount += discountPerItem * quantity;
       }
-
+  
       return acc;
     },
     { subtotal: 0, totalDiscount: 0 }
@@ -68,7 +64,7 @@ const Cart = ({ onContinueShopping }) => {  // Recebe a função como prop
           <a 
             className="continue-shopping" 
             href="#"
-            onClick={onContinueShopping}  // Chama a função para fechar o cart
+            onClick={onContinueShopping}
           >
             Continuar comprando
           </a>

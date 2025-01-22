@@ -22,10 +22,9 @@
   }
 }
 
-/* Header principal */
 .header {
   position: fixed;
-  top: 30px; /* Espaço reservado para a faixa vermelha */
+  top: 30px;
   width: 100%;
   z-index: 100;
   transition: background-color 0.3s ease;

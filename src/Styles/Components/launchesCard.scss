@@ -5,14 +5,16 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 340px;
-    height: 378px;
+    width: 100%;
+    max-width: 340px;
+    max-height: 378px;
+    height: 100%;
     margin-bottom: variables.$padding-xlarge;
   }
 
   .icons-container-top {
     display: flex;
-    justify-content: flex-end;  // Alinha o ícone do favorito à direita
+    justify-content: flex-end;
     width: 100%;
     background-color: variables.$border-color;
     padding: variables.$padding-small variables.$padding-small 0 0;
@@ -25,7 +27,7 @@
   
   .icons-container-middle {
     display: flex;
-    justify-content: center;  // Centraliza a imagem
+    justify-content: center;
     width: 100%;
     background-color: variables.$border-color;
   }
@@ -55,7 +57,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    margin-left: auto;  // Isso garante que o ícone de adicionar vá para a extrema direita
+    margin-left: auto;
   }
   
   .price-container {

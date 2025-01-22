@@ -11,12 +11,16 @@
 }
 
 .cart-image{
-    width: 150px;
-    height: 150px;
+    max-width: 150px;
+    width: 100%;
+    max-height: 150px;
+    height: 100%;
 
     img{
-        width: 150px;
-        height: 150px;
+        max-width: 150px;
+        width: 100%;
+        max-height: 150px;
+        height: 100%;
     }
 }
 
@@ -61,8 +65,10 @@
     align-items: center;
     border: 1px solid #EEEEEE;
     padding: 8px 12px;
-    width: 93px;
-    height: 33px;
+    max-width: 93px;
+    width: 100%;
+    max-height: 33px;
+    height: 100%;
 
     button{
         display: flex;

@@ -17,7 +17,8 @@
     display: flex;
     gap: variables.$padding-large;
     background: white;
-    height: 433px;
+    max-height: 433px;
+    height: 100%;
     max-width: 90%;
     position: relative;
 }
@@ -99,7 +100,8 @@
   
 
   .dialog-body {
-    width: 446px;
+    max-width: 446px;
+    width: 100%;
     padding-right: variables.$space-medium;
     display: flex;
     flex-direction: column;
@@ -125,8 +127,10 @@
   }
 
   .dialog-image{
-    width: 433px;
-    height: 433px;
+    max-width: 433px;
+    width: 100%;
+    max-width: 433px;
+    height: 100%;
     background-color: variables.$border-color;
 
     img{

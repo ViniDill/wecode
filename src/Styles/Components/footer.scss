@@ -45,7 +45,6 @@
 
 .content-footer {
     display: flex;
-    height: 100%;
     height: 424px;
     align-items: center;
     background-color: variables.$tertiary-color;
@@ -55,6 +54,7 @@
     display: flex;
     gap: variables.$space-large;
     align-items: center;
+    width: 100%;
 }
 
 .footer-icons{
@@ -63,7 +63,7 @@
 }
 
 .logo-footer{
-    margin-right: 20%;
+    margin-right: 10%;
 }
 
 .about-us, .politics {
@@ -89,6 +89,13 @@ ul {
 ul{
     list-style-type: none;
     padding-left: 0;
+}
+
+h3{
+    color: variables.$light-color;
+    font-size: variables.$font-regular;
+    font-weight: variables.$weight-bold;
+
 }
 
 a {

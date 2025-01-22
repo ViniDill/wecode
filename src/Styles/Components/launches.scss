@@ -7,45 +7,41 @@
 
 .launches-container {
   padding: variables.$space-small;
-  position: relative;  // Necessário para o posicionamento absoluto da pagination e das setas
+  position: relative;
 }
 
 .swiper {
   .swiper-pagination {
     position: absolute;
-    top: 10px;    // Ajuste a distância do topo
-    right: 50%;   // Centraliza a pagination horizontalmente
-    transform: translateX(50%); // Ajusta para que a pagination fique centralizada
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
     display: flex;
-    justify-content: center;  // Centraliza os pontos da pagination
-    gap: 10px;   // Ajuste a distância entre os pontos
+    justify-content: center;
+    gap: 10px;
   }
 
   .swiper-button-next, .swiper-button-prev {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;  // Garante que as setas fiquem sobrepondo a pagination
+    z-index: 10;
 
-    // Ajuste das setas para ficarem ao redor dos pontos
-    background-color: rgba(0, 0, 0, 0.5); // Exemplo de fundo transparente
-    padding: 5px;  // Ajuste do tamanho das setas
+    padding: 5px;
 
-    // Para a seta direita
     &.swiper-button-next {
-      right: -30px;  // Ajuste para a seta direita
+      right: -30px;
     }
 
-    // Para a seta esquerda
     &.swiper-button-prev {
-      left: -30px;   // Ajuste para a seta esquerda
+      left: -30px;
     }
   }
 
   .swiper-slide {
     display: flex;
-    justify-content: center;  // Garantir que os slides fiquem centralizados
+    justify-content: center;
     align-items: center;
-    padding: 0 variables.$space-small;  // Ajuste o espaçamento entre os slides
+    padding: 0 variables.$space-small;
   }
 }

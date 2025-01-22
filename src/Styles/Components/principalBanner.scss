@@ -1,13 +1,13 @@
 @use "../Base/variables";
 
 .swiper-container {
-    position: relative; /* Para que a paginação seja posicionada em relação ao swiper */
+    position: relative;
   }
   
   .swiper-pagination {
     position: absolute;
-    top: 10px; /* Ajuste a posição para onde você quer que fique */
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10; /* Garantir que a paginação fique sobre a imagem */
+    z-index: 10
   }
