@@ -5,10 +5,8 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 100%;
-    max-width: 340px;
-    max-height: 378px;
-    height: 100%;
+    width: 340px;
+    height: 378px;
     margin-bottom: variables.$padding-xlarge;
   }
 
@@ -19,6 +17,10 @@
     background-color: variables.$border-color;
     padding: variables.$padding-small variables.$padding-small 0 0;
     margin-top: variables.$padding-xlarge;
+
+    @media (max-width: variables.$breakpoint-small) {
+      margin-top: variables.$padding-medium;
+    }
 
     .icons-container-fav {
         cursor: pointer;
@@ -33,8 +35,7 @@
   }
 
   .icons-container-image{
-    width: 100%;
-    max-width: 220px;
+    width: 220px;
   }
   
   .icons-container-bottom {
@@ -81,6 +82,12 @@
     font-size: variables.$font-regular;
     color: variables.$dark-color;
     margin-top: variables.$padding-small;
+
+    @media (max-width: variables.$breakpoint-small) {
+      span{
+        font-size: variables.$font-thin;
+      }
+    }
   }
 
   .info-container {
@@ -90,4 +97,15 @@
     justify-content: left;
     align-items: left;
     margin-top: variables.$padding-medium;
+
+    @media (max-width: variables.$breakpoint-small) {
+      p{
+        font-size: variables.$font-thin;
+        font-weight: variables.$weight-light;
+      }
+
+      span{
+        font-size: variables.$font-small;
+      }
+    }
   }

@@ -34,6 +34,7 @@ const Launches = () => {
   };
 
   return (
+    <>
     <div className="launches">
       <h2>Lançamentos</h2>
       <div className="launches-container">
@@ -45,19 +46,38 @@ const Launches = () => {
             delay: 3000,
             pauseOnMouseEnter: true,
           }}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-            1280: {
-              slidesPerView: 5,
-            },
+        >
+          {products.map((product) => (
+            <SwiperSlide key={product.id}>
+              <LaunchesCard
+                image={`${getFileName(product.image)}.png`}
+                description={product.name}
+                price={product.price.amount}
+                discount={product.price.isDiscount}
+                onAddClick={() => handleAddClick(product)}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {selectedProduct && (
+        <AddToCartDialog
+          product={selectedProduct}
+          unavailableSizes={unavailableSizes}
+          onClose={() => setSelectedProduct(null)}
+          image={`${getFileName(selectedProduct.image)}.png`}
+        />
+      )}
+    </div>
+    <div className="launches-mobile">
+      <h2>Lançamentos</h2>
+      <div className="launches-container-mobile">
+        <Swiper
+          slidesPerView={1.5}
+          autoplay={{
+            delay: 3000,
+            pauseOnMouseEnter: true,
           }}
         >
           {products.map((product) => (
@@ -83,6 +103,7 @@ const Launches = () => {
         />
       )}
     </div>
+    </>
   );
 };
 

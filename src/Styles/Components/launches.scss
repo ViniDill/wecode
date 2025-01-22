@@ -3,11 +3,10 @@
 .launches {
   margin-top: variables.$space-medium;
   padding: 0 variables.$space-xlarge;
-}
 
-.launches-container {
-  padding: variables.$space-small;
-  position: relative;
+  @media (max-width: variables.$breakpoint-small) {
+    display: none;
+  }
 }
 
 .swiper {
@@ -43,5 +42,23 @@
     justify-content: center;
     align-items: center;
     padding: 0 variables.$space-small;
+
+    @media (max-width: variables.$breakpoint-small) {
+        padding: 0;
+    }
   }
+}
+
+.launches-mobile{
+
+    h2{
+      font-size: variables.$font-regular;
+      font-weight: variables.$weight-light;
+      margin: variables.$space-medium 0 0 variables.$space-small;
+    }
+
+    @media (min-width: variables.$breakpoint-small) {
+      display: none;
+    }
+
 }

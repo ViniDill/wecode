@@ -11,3 +11,26 @@
     transform: translateX(-50%);
     z-index: 10
   }
+
+  .container{
+    @media (max-width: variables.$breakpoint-small) {
+        display: none;
+    }
+  }
+
+  .container-mobile{
+    width: 100vw;
+    @media (min-width: variables.$breakpoint-small) {
+        display: none;
+    }
+  }
+
+  .banner-container-image-mobile{
+    width: 100vw;
+  }
+
+  @media (max-width: variables.$breakpoint-small) {
+    .swiper .swiper-slide {
+      padding: 0;
+    }
+  }

@@ -6,9 +6,43 @@
     h2{
         margin: variables.$padding-xlarge 0 variables.$padding-large;
     }
+
+    @media (max-width: variables.$breakpoint-small) {
+      display: none;
+    }
 }
 
 .categories-container{
     display: flex;
     gap: variables.$space-small;
+
+    @media (max-width: variables.$breakpoint-small) {
+      display: none;
+    }
+}
+
+.categories-mobile {
+    margin: 0 variables.$space-small;
+
+    h2{
+        margin: variables.$padding-large 0 variables.$padding-medium;
+        font-size: variables.$font-regular;
+    }
+
+    p{
+        font-size: variables.$font-small;
+        font-weight: variables.$weight-light;
+    }
+
+    @media (min-width: variables.$breakpoint-small) {
+      display: none;
+    }
+}
+
+.categories-container-mobile{
+    display: flex;
+
+    @media (min-width: variables.$breakpoint-small) {
+      display: none;
+    }
 }

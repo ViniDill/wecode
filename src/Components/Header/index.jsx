@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../Styles/Components/header.scss';
 import Menu from '../Menu';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button, CircularProgress, Drawer } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, CircularProgress, Drawer } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Cart from '../Cart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useCart } from '../../context/CartContext';
 
 function Header() {
   const [isFilled, setIsFilled] = useState(false);
@@ -18,13 +17,12 @@ function Header() {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]); // Estado para armazenar itens no carrinho
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); // Estado para verificar se o usuário está logado
-
+  const [cartItems, setCartItems] = useState([]);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const menuRef = useRef(null);
   const menuItemRef = useRef(null);
 
-  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0); // Certifique-se de que "item.quantity" está correto
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]); 
@@ -101,13 +99,11 @@ function Header() {
       setShowModal(true);
     }
 
-    // Simulação de verificação de login
     const loggedIn = localStorage.getItem('userLoggedIn');
     if (loggedIn === 'true') {
       setIsUserLoggedIn(true);
     }
 
-    // Simulação de dados do carrinho
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     setCartItems(savedCartItems);
   }, []);
@@ -121,6 +117,8 @@ function Header() {
     (isFilled ? <img src="./static/images/icons/User-Black.svg" alt="Ícone de usuário" /> : <img src="./static/images/icons/User.svg" alt="Ícone de usuário" />);
 
   const searchIcon = isFilled ? <img src="./static/images/icons/Lupa-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/Lupa.svg" alt="Ícone de busca" />;
+
+  const hamburguerIcon = isFilled ? <img src="./static/images/icons/hamburguer-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/hamburguer.svg" alt="Ícone de busca" />;
 
   return (
     <>
@@ -156,11 +154,34 @@ function Header() {
             </ul>
           </nav>
           <div className="header-actions">
+          <button className="hamburguer-btn">{hamburguerIcon}</button>
             <button className="search-btn">{searchIcon}</button>
             <button className="login-btn">{loginIcon}</button>
             <button className="cart-btn" onClick={() => setIsCartDrawerOpen(true)}> 
               {cartIcon} {totalQuantity > 0 && <span>{totalQuantity}</span>}
             </button>
+          </div>
+        </div>
+        
+        <div className="header-container-mobile">
+          <div className="header-actions">
+            <div className='icons-left'>
+              <button className="hamburguer-btn">{hamburguerIcon}</button>
+              <button className="search-btn">{searchIcon}</button></div>
+            <div className="header-logo-mobile">
+            <a href="/home">
+              <img
+                src={isFilled ? './static/images/icons/logo-preto.svg' : './static/images/icons/logo-branco.svg'}
+                alt="Logo da Empresa"
+              />
+            </a>
+          </div>
+          <div className='icons-left'>
+            <button className="login-btn">{loginIcon}</button>
+            <button className="cart-btn" onClick={() => setIsCartDrawerOpen(true)}> 
+              {cartIcon} {totalQuantity > 0 && <span>{totalQuantity}</span>}
+            </button>
+          </div>
           </div>
         </div>
       </header>
@@ -170,9 +191,6 @@ function Header() {
         onClose={() => setShowModal(false)}
         PaperProps={{
           style: {
-            width: '610px',
-            maxWidth: '610px',
-            margin: '0 auto',
             borderRadius: '0',
           },
         }}

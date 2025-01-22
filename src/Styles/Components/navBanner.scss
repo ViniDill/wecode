@@ -4,6 +4,10 @@
     display: flex;
     gap: 16px;
     margin-top: 37px;
+
+    @media (max-width: variables.$breakpoint-small) {
+        display: none;
+    }
 }
 
 .bigBanner {
@@ -12,4 +16,14 @@
 
 .smallBanner {
     width: 36.35%;
+}
+
+.navBannerContainer-mobile{
+    display: flex;
+    flex-direction: column;
+    margin-top: 37px;
+
+    @media (min-width: variables.$breakpoint-small) {
+        display: none;
+    }
 }

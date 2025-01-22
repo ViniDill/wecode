@@ -6,7 +6,8 @@ import Categories from '../../Components/Categories';
 import NavBanner from '../../Components/NavBanner';
 import Launches from '../../Components/Launches';
 import Blog from '../../Components/Blog';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer'
+import Menu from '../../Components/Menu';
 
 const Home = () => {
     return (

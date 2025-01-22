@@ -10,6 +10,12 @@
     align-items: center;
     background-color: variables.$secondary-color;
     height: 110px;
+
+    @media (max-width: variables.$breakpoint-small) {
+        flex-direction: column;
+        text-align: center;
+        height: 242px;
+    }
 }
 
 .newsletter-text{
@@ -17,6 +23,21 @@
     font-size: variables.$font-medium;
     margin-right: variables.$space-regular;
     color: variables.$tertiary-color;
+}
+
+.newsletter-form{
+
+    @media (max-width: variables.$breakpoint-small) {
+        display: flex;
+        flex-direction: column;
+        gap: variables.$padding-medium;
+        margin-top: variables.$padding-large;
+
+        input, button{
+            width: 361px;
+            margin: auto;
+        }
+    }
 }
 
 .discount {
@@ -48,6 +69,11 @@
     height: 424px;
     align-items: center;
     background-color: variables.$tertiary-color;
+
+    @media (max-width: variables.$breakpoint-small) {
+        flex-direction: column;
+        height: 100%;
+    }
 }
 
 .footer-spacing {
@@ -55,6 +81,11 @@
     gap: variables.$space-large;
     align-items: center;
     width: 100%;
+
+    @media (max-width: variables.$breakpoint-small) {
+        flex-direction: column;
+        margin-bottom: variables.$space-xlarge;
+    }
 }
 
 .footer-icons{
@@ -64,6 +95,11 @@
 
 .logo-footer{
     margin-right: 10%;
+
+    @media (max-width: variables.$breakpoint-small) {
+        width: 100%;
+        margin: variables.$space-medium 0 variables.$space-xlarge;
+    }
 }
 
 .about-us, .politics {
@@ -117,6 +153,11 @@ a {
     font-size: variables.$font-small;
     font-weight: variables.$weight-regular;
     text-align: center;
+
+    @media (max-width: variables.$breakpoint-small) {
+        width: 217px;
+        margin-top: variables.$padding-large;
+    }
 }
 
 .copy-button {

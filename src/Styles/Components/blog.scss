@@ -2,10 +2,14 @@
 
 .blog-container{
     margin-top: variables.$space-medium;
-    padding: 0 variables.$space-xlarge;
     background-color: variables.$border-color;
     margin: variables.$space-large 0;
     padding: variables.$space-large variables.$space-xlarge;
+
+    @media (max-width: variables.$breakpoint-small) {
+        padding: variables.$space-regular variables.$space-small;
+        margin: variables.$space-small 0 0;
+    }
 }
 
 .blog-title{
@@ -17,6 +21,18 @@
         font-size: variables.$font-medium;
         font-weight: variables.$weight-light;
         color: variables.$gray-text-color;
+    }
+
+    @media (max-width: variables.$breakpoint-small) {
+        h2{
+            font-size: variables.$font-regular;
+            font-weight: variables.$weight-regular;
+        }
+
+        p{
+            font-size: variables.$font-thin;
+            font-weight: variables.$weight-light;
+        }
     }
     
 }
@@ -38,6 +54,28 @@
         color: variables.$dark-color;
         text-decoration: underline;
     }
+
+    @media (max-width: variables.$breakpoint-small) {
+        h2{
+            font-size: variables.$font-regular;
+            font-weight: variables.$weight-regular;
+            margin-top: variables.$padding-large;
+        }
+
+        p{
+            font-size: variables.$font-thin;
+            font-weight: variables.$weight-light;
+        }
+
+        a{
+            font-size: variables.$font-thin;
+            font-weight: variables.$weight-light;
+        }
+
+        img{
+            margin-top: variables.$padding-large;
+        }
+    }
 }
 
 .blog-images{
@@ -49,3 +87,22 @@
         width: 100%;
     }
 }
+
+
+.blog-slider .slick-slide {
+    padding: 0 12px;
+
+    @media (max-width: variables.$breakpoint-small) {
+        padding: 0;
+    }
+}
+
+.blog-slider .slick-list {
+    margin: 0 -12px;
+
+    @media (max-width: variables.$breakpoint-small) {
+        margin: 0;
+    
+    }
+}
+
