@@ -13,15 +13,23 @@
 }
 
 .menu-item {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
 
   a {
-    display: block;
     margin: variables.$padding-medium variables.$space-large 0 0;
     color: #333;
     text-decoration: none;
+
+    @media (max-width: variables.$breakpoint-small) {
+        margin: 0;
+        font-size: variables.$font-small;
+        font-weight: variables.$weight-regular;
+        color: variables.$dark-color;
+    }
 
     &:hover {
       color: variables.$tertiary-color;

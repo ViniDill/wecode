@@ -6,6 +6,7 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, CircularProgress, Dr
 import CloseIcon from '@mui/icons-material/Close';
 import Cart from '../Cart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MenuMobile from '../MenuMobile';
 
 function Header() {
   const [isFilled, setIsFilled] = useState(false);
@@ -21,11 +22,13 @@ function Header() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const menuRef = useRef(null);
   const menuItemRef = useRef(null);
+  const [isHamburgerDrawerOpen, setIsHamburgerDrawerOpen] = useState(false);
 
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]); 
+  }, [cartItems]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,6 +120,7 @@ function Header() {
     (isFilled ? <img src="./static/images/icons/User-Black.svg" alt="Ícone de usuário" /> : <img src="./static/images/icons/User.svg" alt="Ícone de usuário" />);
 
   const searchIcon = isFilled ? <img src="./static/images/icons/Lupa-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/Lupa.svg" alt="Ícone de busca" />;
+  const arrowIcon = isFilled ? <img src="./static/images/icons/arrow-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/arrow.svg" alt="Ícone de busca" />;
 
   const hamburguerIcon = isFilled ? <img src="./static/images/icons/hamburguer-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/hamburguer.svg" alt="Ícone de busca" />;
 
@@ -125,8 +129,8 @@ function Header() {
       <div className="header-top">
         <span>
           Você está em: {cidade || 'Carregando...'}
-          <a href="#" onClick={() => setShowModal(true)}> Alterar</a>
-        </span>
+        </span> 
+        <a href="#" onClick={() => setShowModal(true)}> Alterar</a>
       </div>
 
       <header className={`header ${isFilled ? 'header-filled' : ''}`}>
@@ -144,17 +148,22 @@ function Header() {
               <li
                 ref={menuItemRef}
                 onMouseEnter={() => setIsMenuVisible(true)}
-                className="menu-item-with-dropdown"
+                className={`menu-item-with-dropdown ${isFilled ? 'menu-item-filled' : ''}`}
               >
-                <a href="/home">Produtos <img src="./static/images/icons/arrow.svg" alt="" /></a>
+                <a href="/home" className={isFilled ? 'text-black' : 'text-white'}>
+                  Produtos {arrowIcon}
+                </a>
                 {isMenuVisible && <div ref={menuRef}><Menu /></div>}
               </li>
-              <li onMouseEnter={() => setIsMenuVisible(false)}><a href="/home">Lançamentos</a></li>
-              <li onMouseEnter={() => setIsMenuVisible(false)}><a href="/home">Outlet</a></li>
+              <li onMouseEnter={() => setIsMenuVisible(false)}>
+                <a className={isFilled ? 'text-black' : 'text-white'} href="/home">Lançamentos</a>
+              </li>
+              <li onMouseEnter={() => setIsMenuVisible(false)}>
+                <a className={isFilled ? 'text-black' : 'text-white'} href="/home">Outlet</a>
+              </li>
             </ul>
           </nav>
           <div className="header-actions">
-          <button className="hamburguer-btn">{hamburguerIcon}</button>
             <button className="search-btn">{searchIcon}</button>
             <button className="login-btn">{loginIcon}</button>
             <button className="cart-btn" onClick={() => setIsCartDrawerOpen(true)}> 
@@ -166,22 +175,23 @@ function Header() {
         <div className="header-container-mobile">
           <div className="header-actions">
             <div className='icons-left'>
-              <button className="hamburguer-btn">{hamburguerIcon}</button>
-              <button className="search-btn">{searchIcon}</button></div>
+              <button className="hamburguer-btn" onClick={() => setIsHamburgerDrawerOpen(true)}>{hamburguerIcon}</button>
+              <button className="search-btn">{searchIcon}</button>
+            </div>
             <div className="header-logo-mobile">
-            <a href="/home">
-              <img
-                src={isFilled ? './static/images/icons/logo-preto.svg' : './static/images/icons/logo-branco.svg'}
-                alt="Logo da Empresa"
-              />
-            </a>
-          </div>
-          <div className='icons-left'>
-            <button className="login-btn">{loginIcon}</button>
-            <button className="cart-btn" onClick={() => setIsCartDrawerOpen(true)}> 
-              {cartIcon} {totalQuantity > 0 && <span>{totalQuantity}</span>}
-            </button>
-          </div>
+              <a href="/home">
+                <img
+                  src={isFilled ? './static/images/icons/logo-preto.svg' : './static/images/icons/logo-branco.svg'}
+                  alt="Logo da Empresa"
+                />
+              </a>
+            </div>
+            <div className='icons-left'>
+              <button className="login-btn">{loginIcon}</button>
+              <button className="cart-btn" onClick={() => setIsCartDrawerOpen(true)}> 
+                {cartIcon} {totalQuantity > 0 && <span>{totalQuantity}</span>}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -203,86 +213,36 @@ function Header() {
               right: '0', 
               cursor: 'pointer', 
               backgroundColor: '#EEEEEE', 
-              padding: '5px', 
-              borderRadius: '0', 
-              width: '24px', 
-              height: '24px', 
-              boxSizing: 'border-box' 
+              padding: '5px',
+              borderRadius: '0' 
             }} 
             onClick={() => setShowModal(false)} 
           />
-          <div className='title-container'>
-            <span className='modal-title'>Personalize sua experiência e encontre produtos perto de você!</span>
-          </div>
+          <h4>Informe seu CEP</h4>
         </DialogTitle>
         <DialogContent>
-          <div className='CEP'>
-            <label className='CEP-label' htmlFor="cep">Código postal*</label>
-            <input
-              className='CEP-input'
-              type="text"
-              id="cep"
-              value={cep}
-              onChange={handleCepChange}
-              maxLength="8"
-              placeholder="00000-000"
-            />
-          </div>
-          {loading && <CircularProgress />}
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          <div className='city-state'>
-            <div className='city'>
-              <label className='city-label' htmlFor="cidade">Cidade</label>
-              <input
-                className='city-input'
-                type="text"
-                id="cidade"
-                value={cidade}
-                readOnly
-                placeholder="Opcional"
-              />
+          <input
+            type="text"
+            value={cep}
+            onChange={handleCepChange}
+            placeholder="Digite o seu CEP"
+            maxLength="8"
+          />
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <div>
+              {error && <span>{error}</span>}
+              {cidade && estado && (
+                <div>
+                  <p>{`${cidade} - ${estado}`}</p>
+                  <button onClick={saveCep}>Salvar</button>
+                </div>
+              )}
             </div>
-            <div className='state'>
-              <label className='state-label' htmlFor="estado">Estado</label>
-              <input
-                className='state-input'
-                type="text"
-                id="estado"
-                value={estado}
-                readOnly
-                placeholder="Opcional"
-              />
-            </div>
-          </div>
+          )}
         </DialogContent>
-        <DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
-          <button className='save-button' onClick={saveCep}>Salvar endereço</button>
-        </DialogActions>
       </Dialog>
-
-      <Drawer
-        anchor="right"
-        open={isCartDrawerOpen}
-        onClose={() => setIsCartDrawerOpen(false)}
-      >
-        <div>
-          <button 
-            onClick={() => setIsCartDrawerOpen(false)} 
-            style={{ 
-              position: 'absolute', 
-              top: '10px', 
-              right: '10px', 
-              background: 'none', 
-              border: 'none', 
-              fontSize: '24px', 
-              cursor: 'pointer' 
-            }}
-          >
-            <CloseIcon />
-          </button>
-          <Cart />
-        </div>
-      </Drawer>
     </>
   );
 }

@@ -5,3 +5,8 @@ h2 {
     font-size: variables.$font-large;
     font-weight: variables.$weight-regular;
 }
+
+a{
+    display: flex;
+    justify-content: space-between;
+}

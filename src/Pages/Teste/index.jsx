@@ -4,6 +4,7 @@ import Launches from '../../Components/Launches';
 import Blog from '../../Components/Blog';
 import Header from '../../Components/Header';
 import Cart from '../../Components/Cart';
+import MenuMobile from '../../Components/MenuMobile';
 
 const Teste = () => {
     return (
@@ -11,6 +12,7 @@ const Teste = () => {
             <Header />
             <NavBanner />
             <Launches />
+            <MenuMobile />
             <Blog />
             <Cart />
         </div>

@@ -1,0 +1,66 @@
+@use "../Base/variables";
+
+.logo{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    height: 56px;
+    width: 100%;
+    padding: variables.$padding-large;
+}
+
+.menu-container-mobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    width: 331px;
+}
+
+.options-ul{
+    display: flex;
+    flex-direction: column;
+    gap: variables.$padding-large;
+    padding: variables.$padding-large 0;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 299px;
+    cursor: pointer;
+    gap: variables.$padding-large;
+}
+
+.image {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    height: 120px;
+    background-image: url('../../../public/static/images/icons-mobile/banner-principal-1.svg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: variables.$space-xlarge variables.$padding-large variables.$padding-large;
+
+    h2{
+        font-size: variables.$font-regular;
+        font-weight: variables.$weight-bold;
+        color: variables.$light-color;
+    }
+
+    a{
+        text-decoration: underline;
+        font-size: variables.$font-thin;
+        font-weight: variables.$weight-light;
+        color: variables.$light-color;
+
+    }
+  }

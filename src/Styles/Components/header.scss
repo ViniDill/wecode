@@ -2,6 +2,7 @@
 
 .header-top {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 39px;
@@ -74,18 +75,11 @@
   .header-nav ul {
     display: flex;
     flex-direction: row;
-    gap: variables.$space-medium;
     list-style: none;
-    width: 100%;
+    gap: 40px;
 
-    li a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-
-      &:hover {
-        color: variables.$tertiary-color;
-      }
+    li {
+      width: auto;
     }
   }
   
@@ -192,4 +186,12 @@
   cursor: pointer;
   width: 562px;
   height: 43px;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-white {
+  color: white;
 }

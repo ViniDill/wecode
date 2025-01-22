@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import "../../Styles/Components/menu.scss";
 
 const Menu = () => {
-    const [imagePath, setImagePath] = useState("./static/images/icons/image-5.svg"); // Definir a imagem padrão como "Sapatos"
+    const [imagePath, setImagePath] = useState("./static/images/icons/image-5.svg");
 
-    // Função para atualizar a imagem ao passar o mouse
     const handleMouseOver = (imageName) => {
         setImagePath(`./static/images/icons/${imageName}.svg`);
     };
 
     return (
         <div className="menu-container">
-            <div className="">
-                <ul>
+            <div className="division">
+                <ul className="division-ul">
                     <li className="menu-item">
                         <a
                             href="/home"
@@ -42,7 +41,6 @@ const Menu = () => {
                 </ul>
             </div>
             <div className="load-image">
-                {/* Renderiza a imagem dinâmica */}
                 {imagePath && <img src={imagePath} alt="Menu Preview" />}
             </div>
         </div>
