@@ -189,9 +189,17 @@
 }
 
 .text-black {
-  color: black;
+  display: flex;
+  gap: variables.$padding-small;
+  text-align: center;
+  align-items: center;
+  color: variables.$dark-color;
 }
 
 .text-white {
-  color: white;
+  display: flex;
+  gap: variables.$padding-small;
+  text-align: center;
+  align-items: center;
+  color: variables.$light-color;
 }

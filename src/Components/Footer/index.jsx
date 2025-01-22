@@ -70,19 +70,15 @@ const Footer = () => {
           </div>
           <div className="about-us">
             <h3 className="/home">Sobre a empresa</h3>
-            <ul>
-              <li><a href="/home">Quem Somos</a></li>
-              <li><a href="/home">Fale Conosco</a></li>
-            </ul>
+              <a href="/home">Quem Somos</a>
+              <a href="/home">Fale Conosco</a>
           </div>
           <div className="politics">
             <h3 className="/home">Políticas</h3>
-            <ul>
-              <li><a href="/home">Política de Privacidade</a></li>
-              <li><a href="/home">Termos de Uso</a></li>
-              <li><a href="/home">Política de Entrega</a></li>
-              <li><a href="/home">Política de Cupom e Desconto</a></li>
-            </ul>
+             <a href="/home">Política de Privacidade</a>
+             <a href="/home">Termos de Uso</a>
+             <a href="/home">Política de Entrega</a>
+             <a href="/home">Política de Cupom e Desconto</a>
           </div>
         </div>
       </div>

@@ -243,6 +243,54 @@ function Header() {
           )}
         </DialogContent>
       </Dialog>
+
+<Drawer
+  anchor="right"
+  open={isCartDrawerOpen}
+  onClose={() => setIsCartDrawerOpen(false)}
+>
+  <div>
+    <button 
+      onClick={() => setIsCartDrawerOpen(false)} 
+      style={{ 
+        position: 'absolute', 
+        top: '10px', 
+        right: '10px', 
+        background: 'none', 
+        border: 'none', 
+        fontSize: '24px', 
+        cursor: 'pointer' 
+      }}
+    >
+      <CloseIcon />
+    </button>
+    <Cart />
+  </div>
+</Drawer>
+  <Drawer
+    anchor="left"
+    open={isHamburgerDrawerOpen}
+    onClose={() => setIsHamburgerDrawerOpen(false)}
+  >
+    <div>
+      <button 
+        onClick={() => setIsHamburgerDrawerOpen(false)} 
+        style={{
+          position: 'absolute', 
+          top: '15px', 
+          right: '16px', 
+          background: 'none', 
+          border: 'none', 
+          fontSize: '24px', 
+          cursor: 'pointer'
+        }}
+      >
+        <CloseIcon />
+      </button>
+      
+      <MenuMobile />
+    </div>
+  </Drawer>
     </>
   );
 }

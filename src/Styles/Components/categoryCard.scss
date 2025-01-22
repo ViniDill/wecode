@@ -9,3 +9,14 @@
     margin-top: variables.$padding-small;
   }
 }
+
+.category-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.category-card-image:hover {
+  transform: scale(1.05);
+}

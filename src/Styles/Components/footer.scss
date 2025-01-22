@@ -106,10 +106,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: variables.$padding-small;
+    text-align: center;
 
     li{
         width: 100%;
+        text-align: center;
     }
 }
 
