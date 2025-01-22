@@ -213,37 +213,62 @@ function Header() {
               right: '0', 
               cursor: 'pointer', 
               backgroundColor: '#EEEEEE', 
-              padding: '5px',
-              borderRadius: '0' 
+              padding: '5px', 
+              borderRadius: '0', 
+              width: '24px', 
+              height: '24px', 
+              boxSizing: 'border-box' 
             }} 
             onClick={() => setShowModal(false)} 
           />
-          <h4>Informe seu CEP</h4>
+          <div className='title-container'>
+            <span className='modal-title'>Personalize sua experiência e encontre produtos perto de você!</span>
+          </div>
         </DialogTitle>
         <DialogContent>
-          <input
-            type="text"
-            value={cep}
-            onChange={handleCepChange}
-            placeholder="Digite o seu CEP"
-            maxLength="8"
-          />
-          {loading ? (
-            <CircularProgress />
-          ) : (
-            <div>
-              {error && <span>{error}</span>}
-              {cidade && estado && (
-                <div>
-                  <p>{`${cidade} - ${estado}`}</p>
-                  <button onClick={saveCep}>Salvar</button>
-                </div>
-              )}
+          <div className='CEP'>
+            <label className='CEP-label' htmlFor="cep">Código postal*</label>
+            <input
+              className='CEP-input'
+              type="text"
+              id="cep"
+              value={cep}
+              onChange={handleCepChange}
+              maxLength="8"
+              placeholder="00000-000"
+            />
+          </div>
+          {loading && <CircularProgress />}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <div className='city-state'>
+            <div className='city'>
+              <label className='city-label' htmlFor="cidade">Cidade</label>
+              <input
+                className='city-input'
+                type="text"
+                id="cidade"
+                value={cidade}
+                readOnly
+                placeholder="Opcional"
+              />
             </div>
-          )}
+            <div className='state'>
+              <label className='state-label' htmlFor="estado">Estado</label>
+              <input
+                className='state-input'
+                type="text"
+                id="estado"
+                value={estado}
+                readOnly
+                placeholder="Opcional"
+              />
+            </div>
+          </div>
         </DialogContent>
+        <DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
+          <button className='save-button' onClick={saveCep}>Salvar endereço</button>
+        </DialogActions>
       </Dialog>
-
 <Drawer
   anchor="right"
   open={isCartDrawerOpen}

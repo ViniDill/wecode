@@ -19,6 +19,10 @@
   padding: 0;
   margin: 0;
 
+  @media (max-width: variables.$breakpoint-small) {
+    flex-direction: row;
+  }
+
   a {
     margin: variables.$padding-medium variables.$space-large 0 0;
     color: #333;

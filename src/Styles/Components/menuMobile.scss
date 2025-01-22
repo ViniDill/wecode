@@ -64,3 +64,27 @@ li{
 
     }
   }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 100%;
+    padding: variables.$padding-small;
+    z-index: 10;
+    width: 100%;
+
+    li {
+        padding: variables.$padding-small; 
+        text-align: left;
+        a {
+            color: variables.$dark-color;
+            text-decoration: none;
+        }
+    }
+}
+
+.sapato {
+    display: flex;
+    justify-content: space-between;
+    margin-right: variables.$padding-medium;
+}

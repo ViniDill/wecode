@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../Styles/Components/menuMobile.scss";
 
 const MenuMobile = () => {
+    const [activeDropdown, setActiveDropdown] = useState(null);
+
+    // Função para alternar o dropdown
+    const toggleDropdown = (item) => {
+        setActiveDropdown(activeDropdown === item ? null : item);
+    };
 
     return (
         <div className="menu-container-mobile">
@@ -14,34 +20,44 @@ const MenuMobile = () => {
             </div>
             <div className="options">
                 <ul className="options-ul">
-                    <li className="menu-item">
-                        <a href="/home">
-                            Sapatos
-                        </a>
-                        <img src="../static/images/icons-mobile/arrow.svg" alt="" />
+                    <li 
+                        className="menu-item" 
+                        onClick={() => toggleDropdown("sapatos")}
+                    >
+                        <div>
+                            <div className="sapato">   
+                                <a href="#!">Sapatos</a>
+                                <img 
+                                    src="../static/images/icons-mobile/arrow.svg" 
+                                    alt="Seta"
+                                />
+                            </div>
+                        {activeDropdown === "sapatos" && (
+                            <ul className="dropdown">
+                                <li><a href="/sapatos/scarpins">Scarpins</a></li>
+                                <li><a href="/sapatos/mocassim">Mocassim</a></li>
+                                <li><a href="/sapatos/sapatilhas">Sapatilhas</a></li>
+                                <li><a href="/sapatos/mules">Mules</a></li>
+                                <li><a href="/sapatos/peep Toe">Peep Toe</a></li>
+                                <li><a href="/sapatos/oxford">Oxford</a></li>
+                            </ul>
+                        )}
+                        </div>
+                    </li>
+                    <li className="menu-item" onClick={() => toggleDropdown("sandalias")}>
+                        <a href="#!">Sandálias</a>
+                        <img src="../static/images/icons-mobile/arrow.svg" alt="Seta" />
                     </li>
                     <li className="menu-item">
-                        <a href="/home">
-                            Sandálias
-                        </a>
-                        <img src="../static/images/icons-mobile/arrow.svg" alt="" />
+                        <a href="/home">Botas</a>
+                        <img src="../static/images/icons-mobile/arrow.svg" alt="Seta" />
                     </li>
                     <li className="menu-item">
-                        <a href="/home" >
-                            Botas
-                        </a>
-                        <img src="../static/images/icons-mobile/arrow.svg" alt="" />
+                        <a href="/home">Tênis</a>
+                        <img src="../static/images/icons-mobile/arrow.svg" alt="Seta" />
                     </li>
                     <li className="menu-item">
-                        <a href="/home">
-                            Tênis
-                        </a>
-                        <img src="../static/images/icons-mobile/arrow.svg" alt="" />  
-                    </li>
-                    <li className="menu-item">
-                        <a href="/home" >
-                            Outlet
-                        </a>
+                        <a href="/home">Outlet</a>
                     </li>
                 </ul>
             </div>
