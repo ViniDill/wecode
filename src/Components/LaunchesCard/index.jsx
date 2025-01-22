@@ -34,7 +34,7 @@ const LaunchesCard = ({ image, description, price, discount, onAddClick }) => {
       <div className="icons-container-middle">
         <img
           className="icons-container-image"
-          src={`/static/images/produtos/${image}`} // Exibindo a imagem formatada
+          src={`/static/images/produtos/${image}`}
           alt="Product"
         />
       </div>
@@ -48,7 +48,7 @@ const LaunchesCard = ({ image, description, price, discount, onAddClick }) => {
           className="icons-container-add"
           src="./static/images/icons/Adicionar-pela-vitrine.svg"
           alt="Add"
-          onClick={onAddClick} // Chama a função ao clicar
+          onClick={onAddClick}
         />
       </div>
       <div className="info-container">

@@ -15,25 +15,25 @@ const Menu = () => {
                     <li className="menu-item">
                         <a
                             href="/home"
-                            onMouseOver={() => handleMouseOver("image-5")} // Sapatos
+                            onMouseOver={() => handleMouseOver("image-5")}
                         >
                             Sapatos
                         </a>
                         <a
                             href="/home"
-                            onMouseOver={() => handleMouseOver("image-3")} // Scarpins
+                            onMouseOver={() => handleMouseOver("image-3")} 
                         >
                             Scarpins
                         </a>
                         <a
                             href="/home"
-                            onMouseOver={() => handleMouseOver("image-2")} // Sandálias
+                            onMouseOver={() => handleMouseOver("image-2")}
                         >
                             Sandálias
                         </a>
                         <a
                             href="/home"
-                            onMouseOver={() => handleMouseOver("image-1")} // Botas
+                            onMouseOver={() => handleMouseOver("image-1")}
                         >
                             Botas
                         </a>

@@ -11,7 +11,7 @@ const Footer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSent(true); // Altera o estado para exibir o cupom após enviar
+    setIsSent(true);
   };
 
   const handleCopyCoupon = () => {

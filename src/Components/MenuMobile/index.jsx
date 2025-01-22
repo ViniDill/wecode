@@ -4,7 +4,6 @@ import "../../Styles/Components/menuMobile.scss";
 const MenuMobile = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
 
-    // Função para alternar o dropdown
     const toggleDropdown = (item) => {
         setActiveDropdown(activeDropdown === item ? null : item);
     };

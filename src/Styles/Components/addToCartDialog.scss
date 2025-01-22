@@ -69,24 +69,24 @@
   }
   
 .size-box.unavailable {
-  text-decoration: none; /* Remover o risco lateral */
+  text-decoration: none;
   background: #f0f0f0;
   color: #999;
   pointer-events: none;
-  position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+  position: relative;
 }
 
 .size-box.unavailable::before {
-  content: ''; /* Cria um pseudo-elemento */
+  content: '';
   position: absolute;
-  top: 50%; /* Posiciona o risco na metade da altura da caixa */
-  left: -25%; /* Ajusta para que o risco se estenda para as pontas */
-  width: 63px; /* Aumenta a largura para que vá além das bordas */
-  height: 1px; /* Espessura da linha */
-  background-color: #999; /* Cor do risco */
-  transform: rotate(135deg); /* Risco diagonal */
+  top: 50%;
+  left: -25%;
+  width: 63px;
+  height: 1px;
+  background-color: #999;
+  transform: rotate(135deg);
   transform-origin: center;
-  margin-top: -0.5px; /* Ajusta a posição para centralizar a linha */
+  margin-top: -0.5px;
 }
   
   .add-to-cart-button {
