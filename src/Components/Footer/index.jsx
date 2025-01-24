@@ -4,6 +4,7 @@ import "../../Styles/Components/footer.scss";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [isSent, setIsSent] = useState(false);
+  const [isCopied, setIsCopied] = useState(false); // Estado para controlar o botão copiado
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,7 +17,8 @@ const Footer = () => {
 
   const handleCopyCoupon = () => {
     navigator.clipboard.writeText("BEMVINDA");
-    alert("Cupom copiado para a área de transferência!");
+    setIsCopied(true); // Atualiza o estado para indicar que foi copiado
+    setTimeout(() => setIsCopied(false), 3000); // Reseta o texto após 3 segundos
   };
 
   return (
@@ -27,7 +29,7 @@ const Footer = () => {
             <span className="newsletter-text">
               Cadastre-se e receba <span className="discount">10% OFF</span> na sua primeira compra!
             </span>
-            <form onSubmit={handleSubmit} className="newsletter-form">
+            <form onSubmit={handleSubmit} className="newsletter-form" autocomplete="on">
               <input
                 className="newsletter-input"
                 type="email"
@@ -35,6 +37,7 @@ const Footer = () => {
                 value={email}
                 onChange={handleEmailChange}
                 required
+                autocomplete="email"
               />
               <button className="newsletter-button" type="submit">Enviar</button>
             </form>
@@ -52,7 +55,7 @@ const Footer = () => {
                 readOnly
               />
               <button className="copy-button" onClick={handleCopyCoupon}>
-                Copiar
+                {isCopied ? "Copiado!" : "Copiar"}
               </button>
             </div>
           </>

@@ -60,6 +60,7 @@
     font-weight: variables.$weight-regular;
     font-size: variables.$font-small;
     background-color: variables.$tertiary-color;
+    cursor: pointer;
     color: #FFFFFF;
     border: none;
 }
@@ -150,7 +151,7 @@ a {
 
 
 .coupon-input {
-    width: 356px;
+    width: 212px;
     height: 46px;
     background-color: variables.$light-color;
     border: 3px dashed variables.$border-color;

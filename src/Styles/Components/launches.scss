@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+    pointer-events: none;
   }
 
   .swiper-button-next, .swiper-button-prev {
