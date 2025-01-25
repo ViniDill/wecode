@@ -4,7 +4,7 @@ import "../../Styles/Components/footer.scss";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [isSent, setIsSent] = useState(false);
-  const [isCopied, setIsCopied] = useState(false); // Estado para controlar o botão copiado
+  const [isCopied, setIsCopied] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,8 +17,8 @@ const Footer = () => {
 
   const handleCopyCoupon = () => {
     navigator.clipboard.writeText("BEMVINDA");
-    setIsCopied(true); // Atualiza o estado para indicar que foi copiado
-    setTimeout(() => setIsCopied(false), 3000); // Reseta o texto após 3 segundos
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 5000);
   };
 
   return (

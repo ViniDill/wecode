@@ -1,7 +1,7 @@
 @use "../Base/variables";
 
 .categories {
-    margin: 0 variables.$space-large;
+    margin: 0 variables.$space-large variables.$space-large;
 
     h2{
         margin: variables.$padding-xlarge 0 variables.$padding-large;
