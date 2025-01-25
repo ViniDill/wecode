@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import InputMask from 'react-input-mask';
 import '../../Styles/Components/header.scss';
 import Menu from '../Menu';
 import { Dialog, DialogActions, DialogContent, DialogTitle, CircularProgress, Drawer } from '@mui/material';
@@ -17,6 +18,7 @@ function Header() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isCepSaved, setIsCepSaved] = useState(false);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -65,7 +67,7 @@ function Header() {
       .get(`https://viacep.com.br/ws/${cep}/json/`)
       .then((response) => {
         if (response.data.erro) {
-          setError('CEP não encontrado');
+          setError('CEP não encontrado, digite um CEP válido!');
           setCidade('');
           setEstado('');
         } else {
@@ -81,35 +83,62 @@ function Header() {
       });
   };
 
+  const formatCep = (value) => {
+    return value
+      .replace(/\D/g, '')
+      .replace(/^(\d{5})(\d{3})$/, '$1-$2');
+  };
+
+  const isValidCep = (cep) => {
+    const regex = /^\d{5}-\d{3}$/;
+    return regex.test(cep);
+  };
+
   const handleCepChange = (event) => {
-    setCep(event.target.value);
-    if (event.target.value.length === 8) {
-      fetchAddress(event.target.value);
+    const formattedCep = formatCep(event.target.value);
+    setCep(formattedCep);
+
+    if (formattedCep.length === 9 && isValidCep(formattedCep)) {
+      fetchAddress(formattedCep);
     }
   };
 
   const saveCep = () => {
-    setShowModal(false);
-    localStorage.setItem('userCep', cep);
+    if (isValidCep(cep)) {
+      localStorage.setItem('userCep', cep);
+      setIsCepSaved(true);
+      setShowModal(false);
+    } else {
+      setError('CEP inválido. Por favor, insira um CEP válido.');
+    }
   };
 
   useEffect(() => {
     const savedCep = localStorage.getItem('userCep');
-    if (savedCep) {
+
+    if (savedCep && isValidCep(savedCep)) {
       setCep(savedCep);
-      fetchAddress(savedCep);
+      setIsCepSaved(true);
     } else {
-      setShowModal(true);
+      setCep('');
+      setIsCepSaved(false);
     }
 
-    const loggedIn = localStorage.getItem('userLoggedIn');
-    if (loggedIn === 'true') {
-      setIsUserLoggedIn(true);
-    }
+    return () => {
+      setCep('');
+      setError('');
+    };
+  }, [showModal]);
 
-    const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    setCartItems(savedCartItems);
+  useEffect(() => {
+    setTimeout(() => {
+      const savedCep = localStorage.getItem('userCep');
+      if (!savedCep || savedCep === '') {
+        setShowModal(true);
+      }
+    }, 100);
   }, []);
+
 
   const cartIcon = cartItems.length > 0 ? 
     (isFilled ? <img src="./static/images/icons/Cart-Black.svg" alt="Ícone de carrinho" /> : <img src="./static/images/icons/Cart.svg" alt="Ícone de carrinho" />) : 
@@ -121,7 +150,6 @@ function Header() {
 
   const searchIcon = isFilled ? <img src="./static/images/icons/Lupa-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/Lupa.svg" alt="Ícone de busca" />;
   const arrowIcon = isFilled ? <img src="./static/images/icons/arrow-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/arrow.svg" alt="Ícone de busca" />;
-
   const hamburguerIcon = isFilled ? <img src="./static/images/icons/hamburguer-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/hamburguer.svg" alt="Ícone de busca" />;
 
   return (
@@ -230,15 +258,15 @@ function Header() {
         <DialogContent>
           <div className='CEP'>
             <label className='CEP-label' htmlFor="cep">Código postal*</label>
-            <input
-              className='CEP-input'
-              type="text"
-              id="cep"
-              value={cep}
-              onChange={handleCepChange}
-              maxLength="8"
-              placeholder="00000-000"
-            />
+          <InputMask
+            mask="99999-999"
+            value={cep}
+            onChange={handleCepChange}
+            placeholder="00000-000"
+            className='CEP-input'
+          >
+            {(inputProps) => <input {...inputProps} />}
+          </InputMask>
           </div>
           {loading && <CircularProgress />}
           {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -268,7 +296,8 @@ function Header() {
           </div>
         </DialogContent>
         <DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
-          <button className='save-button' onClick={saveCep}>Salvar endereço</button>
+          <button className='save-button' onClick={saveCep} 
+    disabled={!!error} >Salvar endereço</button>
         </DialogActions>
       </Dialog>
 <Drawer
@@ -313,6 +342,7 @@ function Header() {
         }}
       >
         <CloseIcon />
+
       </button>
       
       <MenuMobile />
