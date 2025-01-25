@@ -135,11 +135,12 @@ function Header() {
 
       <header className={`header ${isFilled ? 'header-filled' : ''}`}>
         <div className="header-container">
-          <div className="header-logo">
+          <div className="header-logo" >
             <a href="/home">
               <img
                 src={isFilled ? './static/images/icons/logo-preto.svg' : './static/images/icons/logo-branco.svg'}
                 alt="Logo da Empresa"
+                onMouseEnter={() => setIsMenuVisible(false)}
               />
             </a>
           </div>
@@ -153,7 +154,8 @@ function Header() {
                 <a href="/home" className={isFilled ? 'text-black' : 'text-white'}>
                   Produtos {arrowIcon}
                 </a>
-                {isMenuVisible && <div ref={menuRef}><Menu /></div>}
+                {isMenuVisible && <div ref={menuRef}
+                onMouseLeave={() => setIsMenuVisible(false)}><Menu /></div>}
               </li>
               <li onMouseEnter={() => setIsMenuVisible(false)}>
                 <a className={isFilled ? 'text-black' : 'text-white'} href="/home">Lançamentos</a>
