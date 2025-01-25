@@ -289,7 +289,7 @@ function Header() {
     >
       <CloseIcon />
     </button>
-    <Cart />
+    <Cart onContinueShopping={() => setIsCartDrawerOpen(false)} />
   </div>
 </Drawer>
   <Drawer
