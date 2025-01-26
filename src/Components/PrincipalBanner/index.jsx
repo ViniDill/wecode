@@ -15,16 +15,17 @@ function PrincipalBanner() {
         <Swiper
           slidesPerView={1}
           pagination={{clickable: true}}
-          navigation
           autoplay
+          className="pbanner-swiper"
         >
           <SwiperSlide>
             <img className='banner-container-image' src="../static/images/icons/banner-principal-2.svg" alt="Erro" />
+            <button className="banner-button">Conheça Agora</button>
           </SwiperSlide>
           <SwiperSlide>
             <img className='banner-container-image' src="../static/images/icons/banner-principal-1.svg" alt="Erro" />
+            <button className="banner-button">Conheça Agora</button>
           </SwiperSlide>
-          ...
         </Swiper>
       </div>
       <div className="container-mobile">
@@ -43,7 +44,6 @@ function PrincipalBanner() {
           <SwiperSlide>
             <img className='banner-container-image-mobile' src="../static/images/icons-mobile/banner-principal-3.svg" alt="Erro" />
           </SwiperSlide>
-          ...
         </Swiper>
       </div>
     </div>

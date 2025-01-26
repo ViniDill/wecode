@@ -3,16 +3,10 @@
 .swiper-container {
     position: relative;
   }
-  
-  .swiper-pagination {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10
-  }
 
   .container{
+    position: relative;
+    z-index: 1;
     @media (max-width: variables.$breakpoint-small) {
         display: none;
     }
@@ -30,7 +24,46 @@
   }
 
   @media (max-width: variables.$breakpoint-small) {
-    .swiper .swiper-slide {
+    pbanner-swiper .swiper-slide {
       padding: 0;
     }
   }
+
+  .pbanner-swiper{
+    
+    .swiper-pagination {
+      margin-bottom: variables.$padding-small;
+  }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: variables.$light-color;
+  }
+}
+
+.banner-slide {
+  position: relative;
+  display: inline-block;
+}
+
+.banner-container-image, .banner-container-image-mobile {
+  width: 100%;
+}
+
+.banner-button {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: 150px;
+  height: 43px;
+  transform: translateX(-50%);
+  padding: variables.$padding-medium variables.$padding-large;
+  background-color: transparent;
+  color: variables.$light-color;
+  font-size: 16px;
+  border: 1px solid variables.$light-color;
+  cursor: pointer;
+  font-size: variables.$font-small;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: variables.$padding-medium;
+}

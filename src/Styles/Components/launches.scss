@@ -10,33 +10,6 @@
 }
 
 .swiper {
-  .swiper-pagination {
-    position: absolute;
-    top: 10px;
-    right: 50%;
-    transform: translateX(50%);
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    pointer-events: none;
-  }
-
-  .swiper-button-next, .swiper-button-prev {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-
-    padding: 5px;
-
-    &.swiper-button-next {
-      right: -30px;
-    }
-
-    &.swiper-button-prev {
-      left: -30px;
-    }
-  }
 
   .swiper-slide {
     display: flex;
