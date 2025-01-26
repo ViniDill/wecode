@@ -15,6 +15,7 @@ const PrincipalBanner = () => {
           slidesPerView={1}
           className="pbanner-swiper"
           pagination={{clickable:true}}
+          loop={true}
         >
           <SwiperSlide>
             <img className='banner-container-image' src="../static/images/icons/banner-principal-2.svg" alt="Erro" />

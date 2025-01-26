@@ -22,6 +22,7 @@ const Blogs = () => {
                 pagination={{ clickable: true }}
                 navigation
                 spaceBetween={50}
+                loop={true}
               >
                 <SwiperSlide>
                     <div className='blog-description'>
