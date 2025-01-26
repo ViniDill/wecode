@@ -16,10 +16,10 @@ function Header() {
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isCepSaved, setIsCepSaved] = useState(false);
-  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const menuRef = useRef(null);
@@ -105,7 +105,11 @@ function Header() {
 
   const saveCep = () => {
     if (isValidCep(cep)) {
+      // Salva o CEP, cidade e estado no localStorage
       localStorage.setItem('userCep', cep);
+      localStorage.setItem('userCidade', cidade);
+      localStorage.setItem('userEstado', estado);
+  
       setIsCepSaved(true);
       setShowModal(false);
     } else {
@@ -113,31 +117,40 @@ function Header() {
     }
   };
 
-  useEffect(() => {
+useEffect(() => {
+  const savedCep = localStorage.getItem('userCep');
+  const savedCidade = localStorage.getItem('userCidade');
+  const savedEstado = localStorage.getItem('userEstado');
+
+  if (savedCep && isValidCep(savedCep)) {
+    setCep(savedCep);
+    setCidade(savedCidade || '');  // Se cidade não estiver no localStorage, deixa vazio
+    setEstado(savedEstado || '');  // Se estado não estiver no localStorage, deixa vazio
+    setIsCepSaved(true);
+  } else {
+    setCep('');
+    setCidade('');
+    setEstado('');
+    setIsCepSaved(false);
+  }
+
+  return () => {
+    setCep('');
+    setCidade('');
+    setEstado('');
+    setError('');
+  };
+}, [showModal]);
+
+
+useEffect(() => {
+  setTimeout(() => {
     const savedCep = localStorage.getItem('userCep');
-
-    if (savedCep && isValidCep(savedCep)) {
-      setCep(savedCep);
-      setIsCepSaved(true);
-    } else {
-      setCep('');
-      setIsCepSaved(false);
+    if (!savedCep || savedCep === '') {
+      setShowModal(true);
     }
-
-    return () => {
-      setCep('');
-      setError('');
-    };
-  }, [showModal]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const savedCep = localStorage.getItem('userCep');
-      if (!savedCep || savedCep === '') {
-        setShowModal(true);
-      }
-    }, 100);
-  }, []);
+  }, 100);
+}, []);
 
 
   const cartIcon = cartItems.length > 0 ? 

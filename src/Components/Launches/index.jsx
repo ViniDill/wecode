@@ -9,6 +9,8 @@ import { register } from "swiper/element/bundle";
 import "swiper/scss/pagination"
 import "swiper/scss/navigation"
 import 'swiper/scss';
+import Cart from "../Cart";import Drawer from '@mui/material/Drawer';
+import CloseIcon from '@mui/icons-material/Close'; 
 
 register();
 
@@ -16,7 +18,7 @@ const Launches = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [unavailableSizes, setUnavailableSizes] = useState([]);
-
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   useEffect(() => {
     getProducts().then((data) => {
       setProducts(data);
@@ -33,79 +35,74 @@ const Launches = () => {
     setUnavailableSizes(sizesUnavailableForProduct);
   };
 
+  const openCartDrawer = () => {
+    setIsCartDrawerOpen(true);
+  };
+
   return (
     <>
-    <div className="launches">
-      <h2>Lançamentos</h2>
-      <div className="launches-container">
-        <Swiper
-        className="launches-swiper"
-          slidesPerView={5}
-          pagination={{ clickable: true }}
-          navigation
-          autoplay={{
-            delay: 3000,
-            pauseOnMouseEnter: true,
-          }}
-        >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
-              <LaunchesCard
-                className='launches-card'
-                image={`${getFileName(product.image)}.png`}
-                description={product.name}
-                price={product.price.amount}
-                discount={product.price.isDiscount}
-                onAddClick={() => handleAddClick(product)}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <div className="launches">
+        <h2>Lançamentos</h2>
+        <div className="launches-container">
+          <Swiper
+            className="launches-swiper"
+            slidesPerView={5}
+            pagination={{ clickable: true }}
+            navigation
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              pauseOnMouseEnter: true,
+            }}
+          >
+            {products.map((product) => (
+              <SwiperSlide key={product.id}>
+                <LaunchesCard
+                  className='launches-card'
+                  image={`${getFileName(product.image)}.png`}
+                  description={product.name}
+                  price={product.price.amount}
+                  discount={product.price.isDiscount}
+                  onAddClick={() => handleAddClick(product)}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {selectedProduct && (
-        <AddToCartDialog
-          product={selectedProduct}
-          unavailableSizes={unavailableSizes}
-          onClose={() => setSelectedProduct(null)}
-          image={`${getFileName(selectedProduct.image)}.png`}
-        />
-      )}
-    </div>
-    <div className="launches-mobile">
-      <h2>Lançamentos</h2>
-      <div className="launches-container-mobile">
-        <Swiper
-          slidesPerView={1.5}
-          autoplay={{
-            delay: 3000,
-            pauseOnMouseEnter: true,
-          }}
-        >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
-              <LaunchesCard
-                className='launches-card-mobile'
-                image={`${getFileName(product.image)}.png`}
-                description={product.name}
-                price={product.price.amount}
-                discount={product.price.isDiscount}
-                onAddClick={() => handleAddClick(product)} // Passa o produto selecionado
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {selectedProduct && (
+          <AddToCartDialog
+            product={selectedProduct}
+            unavailableSizes={unavailableSizes}
+            onClose={() => setSelectedProduct(null)}
+            image={`${getFileName(selectedProduct.image)}.png`}
+            openCartDrawer={openCartDrawer}
+          />
+        )}
       </div>
-
-      {selectedProduct && (
-        <AddToCartDialog
-          product={selectedProduct}
-          unavailableSizes={unavailableSizes} // Passa os tamanhos indisponíveis
-          onClose={() => setSelectedProduct(null)}
-          image={`${getFileName(selectedProduct.image)}.png`}
-        />
-      )}
-    </div>
+      <Drawer
+        anchor="right"
+        open={isCartDrawerOpen}
+        onClose={() => setIsCartDrawerOpen(false)}
+      >
+        <div>
+          <button
+            onClick={() => setIsCartDrawerOpen(false)}
+            style={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              background: 'none',
+              border: 'none',
+              fontSize: '24px',
+              cursor: 'pointer'
+            }}
+          >
+            <CloseIcon />
+          </button>
+          <Cart onContinueShopping={() => setIsCartDrawerOpen(false)} />
+        </div>
+      </Drawer>
     </>
   );
 };

@@ -97,16 +97,16 @@
     display: flex;
     .swiper {
         position: relative;
-        z-index: 10; /* Aplique um z-index para garantir que o swiper tenha uma posição relativa */
+        z-index: 10; 
     }
 
     .swiper-pagination {
-        position: absolute;  /* Ajuste a posição para garantir que fiquem acima */
+        position: absolute; 
         top: -48px;
         left: 92%;
         transform: translateX(-50%);
-        z-index: 9999; /* Z-index alto para garantir que fiquem visíveis */
-        pointer-events: none; /* Habilite a interação */
+        z-index: 9999; 
+        pointer-events: none;
     }
 
 
@@ -117,7 +117,7 @@
 
 
     .swiper-button-next, .swiper-button-prev {
-        position: absolute;  /* Ajuste para garantir a sobreposição correta */
+        position: absolute; 
         top: 260px;
         transform: translateY(-670%) scale(0.5);
         z-index: 9999;
