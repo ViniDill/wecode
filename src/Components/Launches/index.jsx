@@ -39,6 +39,7 @@ const Launches = () => {
       <h2>Lançamentos</h2>
       <div className="launches-container">
         <Swiper
+        className="launches-swiper"
           slidesPerView={5}
           pagination={{ clickable: true }}
           navigation
@@ -50,6 +51,7 @@ const Launches = () => {
           {products.map((product) => (
             <SwiperSlide key={product.id}>
               <LaunchesCard
+                className='launches-card'
                 image={`${getFileName(product.image)}.png`}
                 description={product.name}
                 price={product.price.amount}
@@ -83,6 +85,7 @@ const Launches = () => {
           {products.map((product) => (
             <SwiperSlide key={product.id}>
               <LaunchesCard
+                className='launches-card-mobile'
                 image={`${getFileName(product.image)}.png`}
                 description={product.name}
                 price={product.price.amount}

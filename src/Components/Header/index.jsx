@@ -153,7 +153,7 @@ function Header() {
   const hamburguerIcon = isFilled ? <img src="./static/images/icons/hamburguer-Black.svg" alt="Ícone de busca" /> : <img src="./static/images/icons/hamburguer.svg" alt="Ícone de busca" />;
 
   return (
-    <>
+    <div className='conteainer-geral'>
       <div className="header-top">
         <span>
           Você está em: {cidade || 'Carregando...'}
@@ -348,7 +348,7 @@ function Header() {
       <MenuMobile />
     </div>
   </Drawer>
-    </>
+    </div>
   );
 }
 

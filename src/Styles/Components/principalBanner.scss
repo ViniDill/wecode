@@ -1,12 +1,13 @@
 @use "../Base/variables";
 
 .swiper-container {
-    position: relative;
+    overflow: hidden;
   }
 
   .container{
     position: relative;
     z-index: 1;
+    overflow: hidden;
     @media (max-width: variables.$breakpoint-small) {
         display: none;
     }
@@ -30,9 +31,11 @@
   }
 
   .pbanner-swiper{
+    overflow: hidden;
     
     .swiper-pagination {
       margin-bottom: variables.$padding-small;
+      overflow: hidden;
   }
 
     .swiper-pagination-bullet-active {

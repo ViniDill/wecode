@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBanner from '../../Components/NavBanner';
 import Launches from '../../Components/Launches';
-import Blog from '../../Components/Blog';
 import Header from '../../Components/Header';
 import Cart from '../../Components/Cart';
 import MenuMobile from '../../Components/MenuMobile';
@@ -13,7 +12,6 @@ const Teste = () => {
             <NavBanner />
             <Launches />
             <MenuMobile />
-            <Blog />
             <Cart />
         </div>
     );

@@ -3,20 +3,22 @@ import "../../Styles/Components/principalBanner.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { register } from "swiper/element/bundle";
 import "swiper/scss/pagination"
-import 'swiper/scss';
 
 register();
 
-function PrincipalBanner() {
+const PrincipalBanner = () => {
 
   return (
     <div className="banner">
       <div className="container">
         <Swiper
           slidesPerView={1}
-          pagination={{clickable: true}}
-          autoplay
           className="pbanner-swiper"
+                breakpoints={{
+                  480: {
+                    navigation: false,
+                  },
+                }}
         >
           <SwiperSlide>
             <img className='banner-container-image' src="../static/images/icons/banner-principal-2.svg" alt="Erro" />

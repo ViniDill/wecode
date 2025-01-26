@@ -1,0 +1,134 @@
+@use "../Base/variables";
+
+.blog-container{
+    margin-top: variables.$space-medium;
+    background-color: variables.$border-color;
+    margin: variables.$space-large 0;
+    padding: variables.$space-large variables.$space-xlarge;
+    overflow: hidden;
+
+    @media (max-width: variables.$breakpoint-small) {
+        padding: variables.$space-regular variables.$space-small;
+        margin: variables.$space-small 0 0;
+    }
+}
+
+.blog-title{
+    display: flex;
+    flex-direction: column;
+    gap: variables.$padding-small;
+    margin-bottom: variables.$padding-xlarge;
+
+    p{
+        font-size: variables.$font-medium;
+        font-weight: variables.$weight-light;
+        color: variables.$gray-text-color;
+        font-style: italic;
+    }
+
+    @media (max-width: variables.$breakpoint-small) {
+        h2{
+            font-size: variables.$font-regular;
+            font-weight: variables.$weight-regular;
+        }
+
+        p{
+            font-size: variables.$font-thin;
+            font-weight: variables.$weight-light;
+        }
+    }
+    
+}
+
+.blog-description{
+    width: 100%;
+    z-index: 11;
+
+    p{
+        font-size: variables.$font-regular;
+        font-weight: variables.$weight-light;
+        color: variables.$gray-text-color;
+        text-align: left;
+        margin: variables.$padding-small 0;
+    }
+
+    a{
+        font-size: variables.$font-regular;
+        font-weight: variables.$weight-light;
+        color: variables.$dark-color;
+        text-decoration: underline;
+    }
+
+    @media (max-width: variables.$breakpoint-small) {
+        h2{
+            font-size: variables.$font-regular;
+            font-weight: variables.$weight-regular;
+            margin-top: variables.$padding-large;
+        }
+
+        p{
+            font-size: variables.$font-thin;
+            font-weight: variables.$weight-light;
+        }
+
+        a{
+            font-size: variables.$font-thin;
+            font-weight: variables.$weight-light;
+        }
+
+        img{
+            margin-top: variables.$padding-large;
+        }
+    }
+}
+
+.blog-images{
+    display: flex;
+    gap: variables.$space-small;
+    margin-top: variables.$space-medium;
+
+    img {
+        width: 100%;
+    }
+}
+
+.blog-swiper {
+    overflow: visible;
+    .swiper {
+        position: relative;
+        z-index: 10; /* Aplique um z-index para garantir que o swiper tenha uma posição relativa */
+    }
+
+    .swiper-pagination {
+        position: absolute;  /* Ajuste a posição para garantir que fiquem acima */
+        top: -48px;
+        left: 92%;
+        transform: translateX(-50%);
+        z-index: 9999; /* Z-index alto para garantir que fiquem visíveis */
+        pointer-events: none; /* Habilite a interação */
+    }
+
+
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: variables.$dark-color;
+    }
+
+
+    .swiper-button-next, .swiper-button-prev {
+        position: absolute;  /* Ajuste para garantir a sobreposição correta */
+        top: 260px;
+        transform: translateY(-670%) scale(0.5);
+        z-index: 9999;
+        color: variables.$dark-color;
+    }
+
+    .swiper-button-next {
+        right: 1%;
+    }
+
+    .swiper-button-prev {
+        left: 85%;
+    }
+}
+
