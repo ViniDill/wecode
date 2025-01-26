@@ -29,6 +29,7 @@ const MenuMobile = () => {
                                 <img 
                                     src="../static/images/icons-mobile/arrow.svg" 
                                     alt="Seta"
+                                    className="open-drawer"
                                 />
                             </div>
                         {activeDropdown === "sapatos" && (

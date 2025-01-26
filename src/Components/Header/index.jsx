@@ -229,11 +229,6 @@ function Header() {
       <Dialog 
         open={showModal} 
         onClose={() => setShowModal(false)}
-        PaperProps={{
-          style: {
-            borderRadius: '0',
-          },
-        }}
       >
         <DialogTitle style={{ position: 'relative' }}>
           <CloseIcon 

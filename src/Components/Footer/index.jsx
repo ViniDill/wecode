@@ -31,13 +31,11 @@ const Footer = () => {
             </span>
             <form onSubmit={handleSubmit} className="newsletter-form" autocomplete="on">
               <input
+              type="email"
                 className="newsletter-input"
-                type="email"
                 placeholder="Digite seu e-mail"
                 value={email}
                 onChange={handleEmailChange}
-                required
-                autocomplete="email"
               />
               <button className="newsletter-button" type="submit">Enviar</button>
             </form>

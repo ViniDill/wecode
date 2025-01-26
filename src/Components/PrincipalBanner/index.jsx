@@ -14,11 +14,7 @@ const PrincipalBanner = () => {
         <Swiper
           slidesPerView={1}
           className="pbanner-swiper"
-                breakpoints={{
-                  480: {
-                    navigation: false,
-                  },
-                }}
+          pagination={{clickable:true}}
         >
           <SwiperSlide>
             <img className='banner-container-image' src="../static/images/icons/banner-principal-2.svg" alt="Erro" />
@@ -31,21 +27,17 @@ const PrincipalBanner = () => {
         </Swiper>
       </div>
       <div className="container-mobile">
-        <Swiper
-          slidesPerView={1}
-          pagination={{clickable: true}}
-          navigation
-          autoplay
-        >
+        <Swiper slidesPerView={1} pagination={{ clickable: true }} autoplay>
           <SwiperSlide>
-            <img className='banner-container-image-mobile' src="../static/images/icons-mobile/banner-principal-1.svg" alt="Erro" />
+            <img className="banner-container-image-mobile" src="../static/images/icons-mobile/banner-principal-1.svg" alt="Erro" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className='banner-container-image-mobile' src="../static/images/icons-mobile/banner-principal-2.svg" alt="Erro" />
+            <img className="banner-container-image-mobile" src="../static/images/icons-mobile/banner-principal-2.svg" alt="Erro" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className='banner-container-image-mobile' src="../static/images/icons-mobile/banner-principal-3.svg" alt="Erro" />
+            <img className="banner-container-image-mobile" src="../static/images/icons-mobile/banner-principal-3.svg" alt="Erro" />
           </SwiperSlide>
+          <button className="banner-button">Conheça Agora</button>
         </Swiper>
       </div>
     </div>

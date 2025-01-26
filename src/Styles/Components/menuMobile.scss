@@ -88,3 +88,7 @@ li{
     justify-content: space-between;
     margin-right: variables.$padding-medium;
 }
+
+.open-drawer{
+    transform: translateX(4800%);
+}
